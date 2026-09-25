@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#faf8ff;color:#131b2e;}body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:calc(env(safe-area-inset-bottom, 0px) + 5rem);}.pt-safe{padding-top:env(safe-area-inset-top, 0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-dim":"#d2d9f4","surface-variant":"#dae2fd","tertiary":"#006194","tertiary-fixed":"#cce5ff","surface-tint":"#006c4a","secondary-fixed":"#e3dfff","surface-container-high":"#e2e7ff","on-secondary-container":"#fffbff","on-primary":"#ffffff","on-secondary-fixed":"#100069","on-tertiary":"#ffffff","on-primary-fixed-variant":"#005137","on-error-container":"#93000a","primary":"#006948","on-secondary-fixed-variant":"#372abf","surface":"#faf8ff","tertiary-container":"#007bb9","surface-container-lowest":"#ffffff","error-container":"#ffdad6","surface-container":"#eaedff","on-surface-variant":"#3d4a42","background":"#faf8ff","surface-bright":"#faf8ff","primary-container":"#00855d","outline":"#6d7a72","secondary-fixed-dim":"#c3c0ff","primary-fixed-dim":"#68dba9","on-primary-fixed":"#002114","inverse-surface":"#283044","on-tertiary-container":"#fdfcff","on-surface":"#131b2e","on-tertiary-fixed":"#001d31","surface-container-highest":"#dae2fd","on-error":"#ffffff","surface-container-low":"#f2f3ff","inverse-on-surface":"#eef0ff","tertiary-fixed-dim":"#93ccff","inverse-primary":"#68dba9","error":"#ba1a1a","on-primary-container":"#f5fff7","outline-variant":"#bccac0","secondary":"#4e45d5","on-background":"#131b2e","primary-fixed":"#85f8c4","secondary-container":"#6860ef","on-secondary":"#ffffff","on-tertiary-fixed-variant":"#004b73"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-xl":"2rem",gutter:"1rem","space-xs":"0.25rem",margin:"1.25rem","space-lg":"1.5rem","space-sm":"0.5rem","space-md":"1rem"},fontFamily:{"headline-lg":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"display-currency":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"]},fontSize:{"headline-lg":["28px",{lineHeight:"36px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-sm":["18px",{lineHeight:"24px",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"600"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"label-lg":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}],"display-currency":["36px",{lineHeight:"44px",letterSpacing:"-0.03em",fontWeight:"800"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"600"}],"body-lg":["16px",{lineHeight:"24px",fontWeight:"400"}],"body-sm":["12px",{lineHeight:"16px",fontWeight:"400"}],"headline-md":["22px",{lineHeight:"28px",letterSpacing:"-0.01em",fontWeight:"700"}]}}}};</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="Pondo Hub logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Vn1lXPAMjy0creoX_MLnhKD3D2FEwW0fXaWUd4JsC02Lgfn1j66ZTbh9Ozyl0xTq7CYa18-tKXYgRbhN-ayekVX9LFTfYAGS9ctQmI4A2B9qOKco4OadviqDNFDU-Wr0wbsczgOROgyUIZvU3kMc_TR1svrcj7LuUwsAaaknscEgWFXf6dKN59N9QELAL_GkCKxgCPThnQFoC_0TJMWg1k2z51YB86fdECfbKnoeiB5zFcpx97-bX3S5tr"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight leading-none">Pondo Hub</span><span class="font-label-sm text-label-sm text-primary leading-none mt-0.5">Parent &amp; Student</span></div></div><div class="flex items-center gap-space-sm"><a aria-label="Alerts" class="relative w-11 h-11 flex items-center justify-center rounded-full bg-surface-container-low text-on-surface-variant hover:text-on-surface active:scale-95 transition-transform" data-path="parent-alerts" href="#"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface"></span></a><div class="w-9 h-9 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center ring-2 ring-surface shadow-sm overflow-hidden"><span class="material-symbols-outlined text-[20px]">supervisor_account</span></div></div></div></header><main class="flex flex-col relative w-full pt-16 pb-safe bg-surface min-h-screen px-margin"><div class="flex flex-col w-full pb-6">
+<!-- Top Section Title -->
+<div class="flex items-center justify-between py-2">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-bold">Account Hub</span>
+<h1 class="font-headline-md text-headline-md text-on-surface">Profile &amp; Settings</h1>
+</div>
+<button aria-label="QR Code Profile" class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center text-on-surface-variant active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[20px]">qr_code_2</span>
+</button>
+</div>
+<!-- Student Profile Hero Card -->
+<div class="mt-3 bg-surface-container-lowest rounded-xl p-space-md shadow-sm relative overflow-hidden">
+<!-- Decorative background glow -->
+<div class="absolute -top-16 -right-16 w-36 h-36 bg-primary-fixed/25 rounded-full blur-2xl pointer-events-none"></div>
+<div class="relative flex items-start gap-3.5">
+<div class="relative flex-shrink-0">
+<img class="w-16 h-16 rounded-full object-cover shadow-sm" data-alt="A warm, engaging portrait of a young Filipino university male student with neat dark hair and a genuine approachable smile, wearing an emerald green polo shirt against a brightly sunlit campus greenery backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdyE-q8Z4z7yoQE8MY2JWMzSix626T7bkgmRiRPUBTizug2LVAz0GeuMNYjZJ-hyp-O3MKN_sTxcf13YcsKhR2gNwx9Q1ceOSgb1urx_EftYxkDqNRCFJt86rAuZ_LBbaADXymitSCNvL6DZm0LjWi7r7sQqI7W1CliBHJJZlg-Lp0OluGjcQp8RdqY3wGxAkGZpMI8VYjcs74qZf2lRoXBgv1d-5MxKnmiNcSf4f2KHo4ZYJ70ll8vw"/>
+<span class="absolute bottom-0 right-0 w-4 h-4 rounded-full bg-primary ring-2 ring-surface-container-lowest" title="Sync Status: Online"></span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center gap-1.5 flex-wrap">
+<h2 class="font-headline-sm text-headline-sm text-on-surface truncate">Juan Dela Cruz</h2>
+<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full bg-primary/10 text-primary font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+            Verified
+          </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5 line-clamp-1">
+          BS Computer Science • 2nd Year • University of the Philippines
+        </p>
+<div class="mt-1.5 inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container font-label-sm text-label-sm text-on-surface-variant font-mono">
+<span class="material-symbols-outlined text-[13px] text-outline">badge</span>
+          UP-2023-••••9
+        </div>
+</div>
+</div>
+<!-- Quick Stat Counters Deck -->
+<div class="mt-4 grid grid-cols-3 gap-2 pt-3">
+<div class="bg-surface-container-low rounded-lg p-2.5 flex flex-col items-center justify-center text-center">
+<div class="flex items-center gap-1 text-on-surface font-headline-sm text-headline-sm">
+<span>4d</span>
+<span class="text-sm">🔥</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Campus Streak</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-2.5 flex flex-col items-center justify-center text-center">
+<div class="flex items-center gap-1 text-primary font-headline-sm text-headline-sm">
+<span>₱2,400</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">In Goal Vaults</span>
+</div>
+<div class="bg-surface-container-low rounded-lg p-2.5 flex flex-col items-center justify-center text-center">
+<div class="flex items-center gap-1 text-tertiary font-headline-sm text-headline-sm">
+<span>94</span>
+<span class="text-xs">🌿</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Health Score</span>
+</div>
+</div>
+</div>
+<!-- Pondo Channels Section (Manual Ledger Wallets) -->
+<div class="mt-5">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">account_balance_wallet</span>
+<h3 class="font-label-lg text-label-lg text-on-surface">Pondo Channels</h3>
+</div>
+<button class="font-label-sm text-label-sm text-primary font-semibold flex items-center gap-0.5 hover:underline active:opacity-80">
+<span>+ Add Channel</span>
+</button>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-sm shadow-sm space-y-1.5">
+<!-- Cash on Hand -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low/60 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-on-surface block">Pocket Baon / Cash</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Daily physical allowance</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-headline-sm text-headline-sm text-on-surface">₱450.00</span>
+<span class="block font-label-sm text-label-sm text-primary">On pace</span>
+</div>
+</div>
+<!-- GCash Tracking -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low/60 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[18px]">contactless</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface">GCash Ledger</span>
+<span class="px-1.5 py-0.2 rounded-full bg-tertiary/10 text-tertiary font-label-sm text-[10px]">E-Wallet</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Food stalls &amp; canteens</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-headline-sm text-headline-sm text-on-surface">₱650.00</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">Manual sync</span>
+</div>
+</div>
+<!-- Maya Tracking -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low/60 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">phone_iphone</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface">Maya Ledger</span>
+<span class="px-1.5 py-0.2 rounded-full bg-secondary/10 text-secondary font-label-sm text-[10px]">Savings</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Bookings &amp; online rides</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-headline-sm text-headline-sm text-on-surface">₱150.00</span>
+<span class="block font-label-sm text-label-sm text-on-surface-variant">Manual sync</span>
+</div>
+</div>
+<!-- Bank Reference (BDO) -->
+<div class="flex items-center justify-between p-2 rounded-lg bg-surface-container-low/60 hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[18px]">account_balance</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-on-surface">BDO Unibank</span>
+<span class="px-1.5 py-0.2 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-[10px]">Reference</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Tuition &amp; emergency safe</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-md text-label-md text-on-surface-variant font-mono">•••• 8102</span>
+<span class="block font-label-sm text-label-sm text-outline">Untracked sum</span>
+</div>
+</div>
+</div>
+<!-- Micro-note explaining manual ledger philosophy -->
+<div class="mt-2 px-1 flex items-start gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-primary mt-0.5">info</span>
+<p class="font-label-sm text-label-sm leading-tight">
+        Manual ledger only. Pondo Hub protects your privacy: no direct bank credentials, read passwords, or funds are ever handled by the app.
+      </p>
+</div>
+</div>
+<!-- Family Transparency & Autonomy Section -->
+<div class="mt-5">
+<div class="flex items-center gap-1.5 mb-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">family_restroom</span>
+<h3 class="font-label-lg text-label-lg text-on-surface">Family Transparency &amp; Autonomy</h3>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="A comforting and cheerful middle-aged Filipina mother wearing a soft pastel cardigan smiling warmly in a gentle natural daylight setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5jUIheyQkGuSjvp1XBHD6HcEMApsjCbcxrdKUbG7k6iORhIJWVjnSYjQ87Q0PcX2Baa5lEuC5sCGcn35-V8DNCvREEmlUUHSaCF3wOvl8JTtME-0nD_RTvl-yD9cjd6Ifa5T4YjQuwtkr8ExoVeGI5UcRJF4uNycQt-4cLxUZOo2zT25mNCTBLbV_fMVzhpSIVTBEpUceG8jLN1YWPj5kUAOdhDiUVLFEgFQl0HM0rC9PfV6fDH0xZw"/>
+<span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-primary ring-2 ring-surface-container-lowest"></span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm text-on-surface">Maria Dela Cruz</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">(Nanay)</span>
+</div>
+<span class="font-body-sm text-body-sm text-primary flex items-center gap-1 mt-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+              Active Link • 4/5 Permissions Shared
+            </span>
+</div>
+</div>
+</div>
+<!-- Shield explanation capsule -->
+<div class="mt-3 p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-primary-fixed/60 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[16px]">shield_person</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-on-surface block">Student Shield Protected 🛡️</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant text-[11px] leading-none">Guardian sees category pace, not private itemized receipts</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px]">lock</span>
+</div>
+<button class="w-full mt-3 py-2 px-3 rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md flex items-center justify-between hover:text-on-surface active:scale-[0.99] transition-all">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary">tune</span>
+          Manage Permissions &amp; Privacy Shield
+        </span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Budget & Allowance Configurations -->
+<div class="mt-5">
+<div class="flex items-center gap-1.5 mb-2">
+<span class="material-symbols-outlined text-primary text-[18px]">tune</span>
+<h3 class="font-label-lg text-label-lg text-on-surface">Budget Preferences</h3>
+</div>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm divide-y divide-surface-container-low overflow-hidden">
+<!-- Weekly Baon Cycle -->
+<button class="w-full p-3 flex items-center justify-between text-left hover:bg-surface-container-low/50 active:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">date_range</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-on-surface block">Weekly Baon Cycle</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">₱2,000 / week • Resets Monday 6:00 AM</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px]">chevron_right</span>
+</button>
+<!-- Safe Pace Limit -->
+<button class="w-full p-3 flex items-center justify-between text-left hover:bg-surface-container-low/50 active:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">speed</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-on-surface block">Safe Daily Pace Limit</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">₱180 / campus day (5 class days target)</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px]">chevron_right</span>
+</button>
+<!-- Can I Afford This? Sensitivity -->
+<button class="w-full p-3 flex items-center justify-between text-left hover:bg-surface-container-low/50 active:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[18px]">psychology_alt</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-on-surface block">"Can I Afford This?" Sensitivity</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Balanced • Suggests waiting if buffer &lt; 10%</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px]">chevron_right</span>
+</button>
+<!-- Emergency Baon Buffer -->
+<button class="w-full p-3 flex items-center justify-between text-left hover:bg-surface-container-low/50 active:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">savings</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-on-surface block">Emergency Baon Buffer</span>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="font-body-sm text-body-sm text-on-surface-variant">₱1,000 Target (₱900 Saved)</span>
+<span class="px-1.5 py-0.2 rounded-full bg-primary-fixed/80 text-on-primary-fixed font-label-sm text-[10px]">90%</span>
+</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- App Preferences & Data -->
+<div class="mt-5">
+<div class="flex items-center gap-1.5 mb-2">
+<span class="material-symbols-outlined text-outline text-[18px]">settings</span>
+<h3 class="font-label-lg text-label-lg text-on-surface">Preferences &amp; System</h3>
+</div>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<!-- Offline First & Cloud Backup -->
+<div class="p-3 flex items-center justify-between hover:bg-surface-container-low/40 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">cloud_sync</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-on-surface block">Offline First &amp; Cloud Backup</span>
+<span class="font-body-sm text-body-sm text-primary">Synced 2m ago (Google Drive / Local)</span>
+</div>
+</div>
+<button class="px-2.5 py-1 rounded-full bg-surface-container font-label-sm text-label-sm text-on-surface active:scale-95 transition-transform" id="sync-btn" onclick="triggerSync()">
+          Sync Now
+        </button>
+</div>
+<!-- Dark Mode (Toggle) -->
+<div class="p-3 flex items-center justify-between hover:bg-surface-container-low/40 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">dark_mode</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-on-surface block">Dark Mode</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Follow campus daylight cycle</span>
+</div>
+</div>
+<!-- Toggle button -->
+<button aria-checked="false" class="w-11 h-6 bg-surface-container-highest rounded-full p-0.5 transition-colors focus:outline-none" id="darkmode-toggle" onclick="toggleDarkMode()" role="switch">
+<div class="w-5 h-5 bg-surface-container-lowest rounded-full shadow-sm transform transition-transform" id="darkmode-thumb"></div>
+</button>
+</div>
+<!-- Export Financial Ledger -->
+<button class="w-full p-3 flex items-center justify-between text-left hover:bg-surface-container-low/50 active:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">download_for_offline</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-on-surface block">Export Financial Ledger</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Download statements as CSV or PDF</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px]">file_download</span>
+</button>
+<!-- Student Support & FAQ -->
+<button class="w-full p-3 flex items-center justify-between text-left hover:bg-surface-container-low/50 active:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">help_center</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-on-surface block">Student Support &amp; Campus FAQ</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Pondo guides, tip sheets &amp; peer help</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline text-[18px]">open_in_new</span>
+</button>
+<!-- Gentle Log Out -->
+<button class="w-full p-3 flex items-center justify-between text-left hover:bg-error-container/20 active:bg-error-container/40 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-error-container/50 flex items-center justify-center text-error">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-error block">Log Out</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Local ledger copy remains secure</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-error text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Version & Filipino Pride Footer -->
+<div class="mt-6 mb-2 flex flex-col items-center justify-center text-center">
+<div class="flex items-center gap-1.5 text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-primary text-[14px]">favorite</span>
+<span>Pondo Hub v1.4.2 • Made for Filipino College Students</span>
+</div>
+<span class="font-body-sm text-body-sm text-outline text-[11px] mt-0.5">Crafted with care in Diliman, Quezon City 🇵🇭</span>
+</div>
+</div>
+<script>
+  function toggleDarkMode() {
+    const btn = document.getElementById('darkmode-toggle');
+    const thumb = document.getElementById('darkmode-thumb');
+    const isChecked = btn.getAttribute('aria-checked') === 'true';
+    if (isChecked) {
+      btn.setAttribute('aria-checked', 'false');
+      btn.classList.remove('bg-primary');
+      btn.classList.add('bg-surface-container-highest');
+      thumb.classList.remove('translate-x-5');
+    } else {
+      btn.setAttribute('aria-checked', 'true');
+      btn.classList.remove('bg-surface-container-highest');
+      btn.classList.add('bg-primary');
+      thumb.classList.add('translate-x-5');
+    }
+  }
+
+  function triggerSync() {
+    const syncBtn = document.getElementById('sync-btn');
+    const origText = syncBtn.innerText;
+    syncBtn.innerText = 'Syncing...';
+    syncBtn.classList.add('opacity-70');
+    setTimeout(() => {
+      syncBtn.innerText = 'Synced ✓';
+      syncBtn.classList.remove('opacity-70');
+      setTimeout(() => {
+        syncBtn.innerText = origText;
+      }, 2000);
+    }, 900);
+  }
+
+  // Active state synchronization for the shell bottom nav
+  (function setActiveNav() {
+    const navLinks = document.querySelectorAll('nav a');
+    navLinks.forEach(link => {
+      if (link.getAttribute('data-path') === 'profile') {
+        link.classList.remove('text-on-surface-variant');
+        link.classList.add('text-primary', 'font-label-md');
+        const icon = link.querySelector('.material-symbols-outlined');
+        if (icon) {
+          icon.style.fontVariationSettings = "'FILL' 1";
+        }
+      }
+    });
+  })();
+</script></main><nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_-4px_24px_rgba(19,27,46,0.06)]" data-active-classes="text-primary font-label-md"><div class="flex justify-around items-center h-16 px-space-xs"><a class="flex flex-col items-center justify-center min-w-[52px] min-h-[44px] py-1 text-on-surface-variant hover:text-primary active:scale-95 transition-all" data-path="home" href="#"><span class="material-symbols-outlined text-[24px]">dashboard</span><span class="font-label-sm text-label-sm mt-0.5">Home</span></a><a class="flex flex-col items-center justify-center min-w-[52px] min-h-[44px] py-1 text-on-surface-variant hover:text-primary active:scale-95 transition-all" data-path="activity" href="#"><span class="material-symbols-outlined text-[24px]">receipt_long</span><span class="font-label-sm text-label-sm mt-0.5">Activity</span></a><a class="flex flex-col items-center justify-center min-w-[52px] min-h-[44px] py-1 text-on-surface-variant hover:text-primary active:scale-95 transition-all" data-path="goals" href="#"><span class="material-symbols-outlined text-[24px]">flag_circle</span><span class="font-label-sm text-label-sm mt-0.5">Goals</span></a><a aria-current="page" class="relative flex flex-col items-center justify-center min-w-[52px] min-h-[44px] py-1 active:scale-95 transition-all text-primary font-label-md" data-path="parent-alerts" href="#"><div class="relative"><span class="material-symbols-outlined text-[24px]">notifications_active</span><span class="absolute -top-1 -right-1.5 flex h-4 min-w-[16px] px-1 items-center justify-center rounded-full bg-error text-on-error font-label-sm text-[10px] leading-none font-bold">3</span></div><span class="font-label-sm text-label-sm mt-0.5">Alerts</span></a><a class="flex flex-col items-center justify-center min-w-[52px] min-h-[44px] py-1 text-on-surface-variant hover:text-primary active:scale-95 transition-all" data-path="profile" href="#"><span class="material-symbols-outlined text-[24px]">account_circle</span><span class="font-label-sm text-label-sm mt-0.5">Profile</span></a></div></nav></body></html>

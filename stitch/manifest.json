@@ -1,0 +1,311 @@
+{
+  "projectTitle": "Pondo Hub Financial App UI",
+  "projectId": "10787945740158542354",
+  "screens": [
+    {
+      "number": 1,
+      "id": "2d98ead9f9ed4d5aad8549f4e338871c",
+      "title": "Screen 1 \u2014 Splash Screen",
+      "width": "780",
+      "height": "1768",
+      "files": {
+        "htmlCode": {
+          "path": "01-splash-screen/code.html",
+          "bytes": 8844,
+          "sha256": "20cfea98a68a62f4896eedfdc00b3703858118c560d2910180c48a9c14038180"
+        },
+        "screenshot": {
+          "path": "01-splash-screen/screenshot.png",
+          "bytes": 22532,
+          "sha256": "6d1978445be821bbba166776d16430008d950a05949348e99a4ec534e3bf5e30"
+        }
+      }
+    },
+    {
+      "number": 2,
+      "id": "e7d792e7fc9f4447a9abb2497f160662",
+      "title": "Screen 2 \u2014 Welcome / Onboarding",
+      "width": "780",
+      "height": "1838",
+      "files": {
+        "htmlCode": {
+          "path": "02-welcome-onboarding/code.html",
+          "bytes": 11864,
+          "sha256": "87466a76e5634e1b2187834eb0768785cbeed3062fb66d18fb22f6906af459e7"
+        },
+        "screenshot": {
+          "path": "02-welcome-onboarding/screenshot.png",
+          "bytes": 60083,
+          "sha256": "7f4650731fca7f28c067f331317e76506dbbf254442604e85077172c3c2d1e8b"
+        }
+      }
+    },
+    {
+      "number": 3,
+      "id": "c4d829da326d49a38ead47d4b003d660",
+      "title": "Screen 3 \u2014 Registration & Role Selection",
+      "width": "780",
+      "height": "2166",
+      "files": {
+        "htmlCode": {
+          "path": "03-registration-role-selection/code.html",
+          "bytes": 17651,
+          "sha256": "e724bcdf91e6947fe8f4c317436b3e5e11483cb8f8546beda7acb9cbe0645164"
+        },
+        "screenshot": {
+          "path": "03-registration-role-selection/screenshot.png",
+          "bytes": 44258,
+          "sha256": "bbc149df6beb278fc0f53add6f8d6638f8b22ff4877e00d1c570ef0843fe52e7"
+        }
+      }
+    },
+    {
+      "number": 4,
+      "id": "14ec11e633f640dfb1b7665b09828c3b",
+      "title": "Screen 4 \u2014 Student Home Dashboard",
+      "width": "780",
+      "height": "2930",
+      "files": {
+        "htmlCode": {
+          "path": "04-student-home-dashboard/code.html",
+          "bytes": 22201,
+          "sha256": "0b4b7fe4f37379dcb148b2283c0019c9e970250d043f8bb62f4f515907eb72dd"
+        },
+        "screenshot": {
+          "path": "04-student-home-dashboard/screenshot.png",
+          "bytes": 46097,
+          "sha256": "3e82e11ad2e8d314d868485cf1daadd6b9c5fd61bafd40dc51bd4494c76513ab"
+        }
+      }
+    },
+    {
+      "number": 5,
+      "id": "f3c4d16db2014e608f52efca7e475f85",
+      "title": "Screen 5 \u2014 Add Cash-In",
+      "width": "780",
+      "height": "2346",
+      "files": {
+        "htmlCode": {
+          "path": "05-add-cash-in/code.html",
+          "bytes": 19564,
+          "sha256": "fba47afe208dbfbf5c87752c3e3e5cfdaec3d9eab6217f9f7b9b80ce7c4cdeda"
+        },
+        "screenshot": {
+          "path": "05-add-cash-in/screenshot.png",
+          "bytes": 43609,
+          "sha256": "9a68852bd85b85aaf5099f2a72e4acd1aeeb1d3496915e314e59747c8aba9e11"
+        }
+      }
+    },
+    {
+      "number": 6,
+      "id": "2922e1f0318448e3b9c680143afaa100",
+      "title": "Screen 6 \u2014 Add Expense",
+      "width": "780",
+      "height": "2252",
+      "files": {
+        "htmlCode": {
+          "path": "06-add-expense/code.html",
+          "bytes": 22232,
+          "sha256": "bf3b796ef923311f3653ea839b61e391b751e1f4e9ec776321c32b85c3820ab6"
+        },
+        "screenshot": {
+          "path": "06-add-expense/screenshot.png",
+          "bytes": 41840,
+          "sha256": "8d91b4140357ab37144cd3856f4dcce45d225cdc7f400180f80b61f5d5c8578d"
+        }
+      }
+    },
+    {
+      "number": 7,
+      "id": "c18a4ab5b29d4dfe9ef27f4795bce5a6",
+      "title": "Screen 7 \u2014 Can I Afford This?",
+      "width": "780",
+      "height": "3334",
+      "files": {
+        "htmlCode": {
+          "path": "07-can-i-afford-this/code.html",
+          "bytes": 21835,
+          "sha256": "00c4ec73b69d1a7ac2cc6af9ba9c9942658997d0df7a8434eec2aa07e6afbadb"
+        },
+        "screenshot": {
+          "path": "07-can-i-afford-this/screenshot.png",
+          "bytes": 44525,
+          "sha256": "5f2122a87b1d6343c76a82c8c2883c0e22a6e1b824b0418a00c7f4dc80ef36e5"
+        }
+      }
+    },
+    {
+      "number": 8,
+      "id": "e041e959550b4cbd9752c9f6e7e8d140",
+      "title": "Screen 8 \u2014 Savings Goals",
+      "width": "780",
+      "height": "2648",
+      "files": {
+        "htmlCode": {
+          "path": "08-savings-goals/code.html",
+          "bytes": 22146,
+          "sha256": "79099766fdacb75ee3ca92637c59fa7f9cde29d8949d81495906b09d25e9eed3"
+        },
+        "screenshot": {
+          "path": "08-savings-goals/screenshot.png",
+          "bytes": 50755,
+          "sha256": "7231050e56df50a130a58dfed818f9d94a213c57b0b74257d9d561fcea1e0e30"
+        }
+      }
+    },
+    {
+      "number": 9,
+      "id": "80ce2b285e34468ca2ef9fdd9e061f18",
+      "title": "Screen 9 \u2014 Create Savings Goal",
+      "width": "780",
+      "height": "3084",
+      "files": {
+        "htmlCode": {
+          "path": "09-create-savings-goal/code.html",
+          "bytes": 22234,
+          "sha256": "6ed38f0f07fffcd7e5aa8261577b4114b82f40c1b295e2dd27884a1eb4ee5db1"
+        },
+        "screenshot": {
+          "path": "09-create-savings-goal/screenshot.png",
+          "bytes": 37725,
+          "sha256": "bcfe38a112a22952493e2b9a8873e82c60e690470304355c674a0d5cb9216e24"
+        }
+      }
+    },
+    {
+      "number": 10,
+      "id": "386758c647af4dd3ad8b5c5a34edcd5e",
+      "title": "Screen 10 \u2014 Spending Insights",
+      "width": "780",
+      "height": "3792",
+      "files": {
+        "htmlCode": {
+          "path": "10-spending-insights/code.html",
+          "bytes": 26510,
+          "sha256": "3943c40510674381133a9539a02aa527cd2b04b22b6a169746324b71f9521599"
+        },
+        "screenshot": {
+          "path": "10-spending-insights/screenshot.png",
+          "bytes": 30504,
+          "sha256": "8a2ad7368a024de84bcb7df3c5ccab7995f4b891846e10106585da894ae33308"
+        }
+      }
+    },
+    {
+      "number": 11,
+      "id": "d6f4801dff6d465da449a696eba73d88",
+      "title": "Screen 11 \u2014 Transaction History",
+      "width": "780",
+      "height": "2734",
+      "files": {
+        "htmlCode": {
+          "path": "11-transaction-history/code.html",
+          "bytes": 32601,
+          "sha256": "c0f834d392349c88fba863ea6471d231e122b1eda44b89a916a871ca165db1f4"
+        },
+        "screenshot": {
+          "path": "11-transaction-history/screenshot.png",
+          "bytes": 45231,
+          "sha256": "ce7bae0c340ec73b14cf57f95a28245ad421ebc332f89e13f03a07470073b686"
+        }
+      }
+    },
+    {
+      "number": 12,
+      "id": "40ece7fab2d843ed9cf2f4e6f8526674",
+      "title": "Screen 12 \u2014 Parent Sharing",
+      "width": "780",
+      "height": "3380",
+      "files": {
+        "htmlCode": {
+          "path": "12-parent-sharing/code.html",
+          "bytes": 25346,
+          "sha256": "51bf44d56f4d367b61b3fb20e7a2ec9cb4c260daa45acbda37ff14ddfeca7ecb"
+        },
+        "screenshot": {
+          "path": "12-parent-sharing/screenshot.png",
+          "bytes": 40888,
+          "sha256": "55d9fe576a9cb438bad5ed6b32c676d4d52939e01384b781c175ad1a6821eb08"
+        }
+      }
+    },
+    {
+      "number": 13,
+      "id": "736b45ff886245b196a4ae81fd463b0a",
+      "title": "Screen 13 \u2014 Parent Invitation",
+      "width": "780",
+      "height": "3086",
+      "files": {
+        "htmlCode": {
+          "path": "13-parent-invitation/code.html",
+          "bytes": 22420,
+          "sha256": "13478627746d120dcc5e7d1a79581bd4b0f9b734cdb22e09fc1e2fb29447b903"
+        },
+        "screenshot": {
+          "path": "13-parent-invitation/screenshot.png",
+          "bytes": 37334,
+          "sha256": "e598aed5a6d60757c0c84c64fb9a1e104c3abee128fdd392a8ad6114e3225b06"
+        }
+      }
+    },
+    {
+      "number": 14,
+      "id": "ff22e6b5d5e344fdb0b219dc07ed6afc",
+      "title": "Screen 14 \u2014 Parent Dashboard",
+      "width": "780",
+      "height": "3320",
+      "files": {
+        "htmlCode": {
+          "path": "14-parent-dashboard/code.html",
+          "bytes": 28411,
+          "sha256": "1434124c129c9345017cfb24d7ac71d3f609fba00906051676041b451456b681"
+        },
+        "screenshot": {
+          "path": "14-parent-dashboard/screenshot.png",
+          "bytes": 42104,
+          "sha256": "722ad87765fd7614ff30cc2443887541a5ca253c3861e1635c4d754f5994fb53"
+        }
+      }
+    },
+    {
+      "number": 15,
+      "id": "9897dbd2140e446ebe565f5e3b037e98",
+      "title": "Screen 15 \u2014 Parent Alerts",
+      "width": "780",
+      "height": "4184",
+      "files": {
+        "htmlCode": {
+          "path": "15-parent-alerts/code.html",
+          "bytes": 22651,
+          "sha256": "30dba7e25041daf9b61ee2a80e89cd5da88f80fa913da18fa6230b615428c65d"
+        },
+        "screenshot": {
+          "path": "15-parent-alerts/screenshot.png",
+          "bytes": 34461,
+          "sha256": "68f70c67567360ca213181263cd16e8abaced8043255560fb346b6d1684c5464"
+        }
+      }
+    },
+    {
+      "number": 17,
+      "id": "bca7a6efcf254a5ab4dbfdeec4a15ac9",
+      "title": "Screen 17 \u2014 Student Profile & Settings",
+      "width": "780",
+      "height": "3568",
+      "files": {
+        "htmlCode": {
+          "path": "17-student-profile-settings/code.html",
+          "bytes": 28970,
+          "sha256": "111d606429b85a9361748cd5fc6f305db93b688307e950e3587f500113800cb4"
+        },
+        "screenshot": {
+          "path": "17-student-profile-settings/screenshot.png",
+          "bytes": 39785,
+          "sha256": "b6bc0a54bb2d945bb4f7b65002e09456af3fd99b08c69b99448948a409976987"
+        }
+      }
+    }
+  ],
+  "errors": []
+}

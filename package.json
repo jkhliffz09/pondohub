@@ -1,0 +1,37 @@
+{
+  "name": "pondo-hub",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "scripts": {
+    "dev": "concurrently -n api,mobile -c green,magenta \"npm run dev -w @pondo/api\" \"npm run start -w @pondo/mobile\"",
+    "mobile": "npm run start -w @pondo/mobile",
+    "web": "npm run web -w @pondo/mobile",
+    "api": "npm run dev -w @pondo/api",
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "test": "tsx --test tests/*.test.ts",
+    "export": "npm run export -w @pondo/mobile"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.8",
+    "@types/cors": "2.8.19",
+    "@types/express": "5.0.6",
+    "@types/node": "26.6.2",
+    "concurrently": "10.0.5",
+    "prettier": "3.9.9",
+    "react-native-safe-area-context": "5.7.0",
+    "react-native-screens": "4.26.2",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3"
+  },
+  "overrides": {
+    "react-native-safe-area-context": "5.7.0",
+    "react-native-screens": "4.26.2"
+  }
+}

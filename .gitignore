@@ -1,0 +1,12 @@
+node_modules/
+.expo/
+dist/
+.env
+.env.*
+!.env.example
+.DS_Store
+*.tsbuildinfo
+coverage/
+supabase/.temp/
+apps/mobile/android/
+apps/mobile/ios/

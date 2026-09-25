@@ -1,0 +1,40 @@
+{
+  "expo": {
+    "name": "Pondo Hub",
+    "slug": "pondo-hub",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.pondohub.app"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#087F5B",
+        "foregroundImage": "./assets/adaptive-icon.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "com.pondohub.app"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "name": "Pondo Hub",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-font",
+      "expo-secure-store",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#087F5B",
+          "image": "./assets/icon.png",
+          "imageWidth": 130
+        }
+      ]
+    ],
+    "scheme": "pondohub"
+  }
+}

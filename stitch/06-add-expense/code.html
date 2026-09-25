@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#faf8ff;color:#131b2e;}body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom, 1rem);}.pt-safe{padding-top:env(safe-area-inset-top, 0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-dim":"#d2d9f4","surface-variant":"#dae2fd","tertiary":"#006194","tertiary-fixed":"#cce5ff","surface-tint":"#006c4a","secondary-fixed":"#e3dfff","surface-container-high":"#e2e7ff","on-secondary-container":"#fffbff","on-primary":"#ffffff","on-secondary-fixed":"#100069","on-tertiary":"#ffffff","on-primary-fixed-variant":"#005137","on-error-container":"#93000a","primary":"#006948","on-secondary-fixed-variant":"#372abf","surface":"#faf8ff","tertiary-container":"#007bb9","surface-container-lowest":"#ffffff","error-container":"#ffdad6","surface-container":"#eaedff","on-surface-variant":"#3d4a42","background":"#faf8ff","surface-bright":"#faf8ff","primary-container":"#00855d","outline":"#6d7a72","secondary-fixed-dim":"#c3c0ff","primary-fixed-dim":"#68dba9","on-primary-fixed":"#002114","inverse-surface":"#283044","on-tertiary-container":"#fdfcff","on-surface":"#131b2e","on-tertiary-fixed":"#001d31","surface-container-highest":"#dae2fd","on-error":"#ffffff","surface-container-low":"#f2f3ff","inverse-on-surface":"#eef0ff","tertiary-fixed-dim":"#93ccff","inverse-primary":"#68dba9","error":"#ba1a1a","on-primary-container":"#f5fff7","outline-variant":"#bccac0","secondary":"#4e45d5","on-background":"#131b2e","primary-fixed":"#85f8c4","secondary-container":"#6860ef","on-secondary":"#ffffff","on-tertiary-fixed-variant":"#004b73"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-xl":"2rem",gutter:"1rem","space-xs":"0.25rem",margin:"1.25rem","space-lg":"1.5rem","space-sm":"0.5rem","space-md":"1rem"},fontFamily:{"headline-lg":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"display-currency":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"]},fontSize:{"headline-lg":["28px",{lineHeight:"36px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-sm":["18px",{lineHeight:"24px",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"600"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"label-lg":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}],"display-currency":["36px",{lineHeight:"44px",letterSpacing:"-0.03em",fontWeight:"800"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"600"}],"body-lg":["16px",{lineHeight:"24px",fontWeight:"400"}],"body-sm":["12px",{lineHeight:"16px",fontWeight:"400"}],"headline-md":["22px",{lineHeight:"28px",letterSpacing:"-0.01em",fontWeight:"700"}]}}}};</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><button aria-label="Go Back" class="w-11 h-11 -ml-2 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container active:scale-95 transition-all" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">arrow_back</span></button><img alt="Brand logo. - Primary color: #059669
+- Font: plusJakartaSans
+- Mode: light
+- Roundness: rounded-md
+" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Vn1lXPAMjy0creoX_MLnhKD3D2FEwW0fXaWUd4JsC02Lgfn1j66ZTbh9Ozyl0xTq7CYa18-tKXYgRbhN-ayekVX9LFTfYAGS9ctQmI4A2B9qOKco4OadviqDNFDU-Wr0wbsczgOROgyUIZvU3kMc_TR1svrcj7LuUwsAaaknscEgWFXf6dKN59N9QELAL_GkCKxgCPThnQFoC_0TJMWg1k2z51YB86fdECfbKnoeiB5zFcpx97-bX3S5tr"/><h1 class="font-headline-sm text-headline-sm text-on-surface truncate">Add Expense</h1></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="flex flex-col relative w-full pt-16 pb-safe bg-surface min-h-screen px-margin"><div class="flex flex-col w-full pb-8">
+<!-- Subtitle & Daily Context Note -->
+<div class="flex items-center justify-between mb-4 mt-2">
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Track spending to update your safe daily pondo</p>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+      Smart Pondo
+    </span>
+</div>
+<!-- Dynamic Real-Time Budget Feedback Alert Card -->
+<div class="transition-all duration-300 transform rounded-xl bg-surface-container-lowest p-4 shadow-sm mb-5 relative overflow-hidden" id="feedbackCard">
+<div class="absolute top-0 left-0 w-1.5 h-full bg-primary"></div>
+<div class="flex items-start justify-between gap-3 mb-2">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[16px] font-bold">check</span>
+</div>
+<span class="font-label-md text-label-md text-primary font-bold">Expense recorded</span>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+        On Track
+      </span>
+</div>
+<div class="flex items-baseline justify-between mt-1 mb-2">
+<div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Today's remaining budget</p>
+<p class="font-headline-md text-headline-md text-on-surface tracking-tight font-extrabold" id="remainingDisplay">₱60.00</p>
+</div>
+<div class="text-right">
+<span class="font-label-sm text-label-sm text-on-surface-variant line-through block">₱180.00</span>
+<span class="font-label-sm text-label-sm text-error bg-error-container/60 px-2 py-0.5 rounded-full font-bold inline-block" id="deductedBadge">-₱120</span>
+</div>
+</div>
+<!-- Pace Meter Progress Bar -->
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden mb-2">
+<div class="bg-primary h-full rounded-full transition-all duration-500" id="budgetProgressBar" style="width: 33.33%;"></div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">insights</span>
+<span>You have <strong class="text-primary font-bold" id="safeSpendingSpan">₱60 safe spending</strong> left for dinner &amp; evening commute.</span>
+</p>
+</div>
+<!-- Expense Amount & Details Card -->
+<div class="bg-surface-container-lowest rounded-xl p-4 shadow-sm mb-5">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant tracking-wider uppercase font-bold">Expense Amount</span>
+<span class="font-label-sm text-label-sm text-primary flex items-center gap-1 font-semibold">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+        Today, 12:45 PM
+      </span>
+</div>
+<!-- Amount Display / Input -->
+<div class="flex items-center gap-2 bg-surface-container-low rounded-xl px-4 py-3 mb-3">
+<span class="font-display-currency text-display-currency text-primary select-none">₱</span>
+<input class="w-full bg-transparent font-display-currency text-display-currency text-on-surface focus:outline-none placeholder:text-outline-variant font-extrabold" id="amountInput" placeholder="0" step="any" type="number" value="120"/>
+</div>
+<!-- Quick Increment Chips -->
+<div class="flex items-center gap-2 mb-4 overflow-x-auto pb-1">
+<button class="px-3 py-1.5 rounded-full bg-surface-container font-label-md text-label-md text-on-surface hover:bg-surface-container-high transition-colors active:scale-95" onclick="adjustAmount(20)" type="button">+₱20</button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container font-label-md text-label-md text-on-surface hover:bg-surface-container-high transition-colors active:scale-95" onclick="adjustAmount(50)" type="button">+₱50</button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container font-label-md text-label-md text-on-surface hover:bg-surface-container-high transition-colors active:scale-95" onclick="adjustAmount(100)" type="button">+₱100</button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container-high font-label-md text-label-md text-primary font-bold transition-colors active:scale-95" onclick="setExactAmount(120)" type="button">₱120</button>
+</div>
+<!-- Description Input -->
+<div class="relative bg-surface-container-low rounded-xl px-4 py-3 flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">edit_note</span>
+<div class="flex-1">
+<label class="block font-label-sm text-label-sm text-on-surface-variant" for="descInput">Description</label>
+<input class="w-full bg-transparent font-body-md text-body-md text-on-surface focus:outline-none" id="descInput" placeholder="What was this for?" type="text" value="Lunch at School Canteen"/>
+</div>
+</div>
+</div>
+<!-- Category Selector Grid -->
+<div class="mb-5">
+<div class="flex items-center justify-between mb-2.5">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-bold">Select Category</h2>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Tap to pick</span>
+</div>
+<div class="grid grid-cols-2 gap-2.5" id="categoryGrid">
+<!-- Food (Selected) -->
+<button class="category-btn text-left p-3 rounded-xl bg-surface-container-lowest shadow-sm flex items-center gap-3 transition-all relative overflow-hidden ring-2 ring-primary bg-primary/5" onclick="selectCategory(this, 'Food')" type="button">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<div class="min-w-0 flex-1">
+<p class="font-label-lg text-label-lg text-on-surface font-bold truncate">Food &amp; Meals</p>
+<p class="font-label-sm text-label-sm text-primary font-medium">Canteen, Snacks</p>
+</div>
+<span class="check-icon material-symbols-outlined text-primary text-[20px]">check_circle</span>
+</button>
+<!-- Transportation -->
+<button class="category-btn text-left p-3 rounded-xl bg-surface-container-lowest shadow-sm flex items-center gap-3 transition-all relative overflow-hidden" onclick="selectCategory(this, 'Transportation')" type="button">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed shrink-0">
+<span class="material-symbols-outlined text-[20px]">directions_bus</span>
+</div>
+<div class="min-w-0 flex-1">
+<p class="font-label-lg text-label-lg text-on-surface font-bold truncate">Transportation</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant font-medium">Jeep / Bus / LRT</p>
+</div>
+<span class="check-icon hidden material-symbols-outlined text-primary text-[20px]">check_circle</span>
+</button>
+<!-- School & Supplies -->
+<button class="category-btn text-left p-3 rounded-xl bg-surface-container-lowest shadow-sm flex items-center gap-3 transition-all relative overflow-hidden" onclick="selectCategory(this, 'School')" type="button">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed shrink-0">
+<span class="material-symbols-outlined text-[20px]">school</span>
+</div>
+<div class="min-w-0 flex-1">
+<p class="font-label-lg text-label-lg text-on-surface font-bold truncate">School Supplies</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant font-medium">Books, Paper</p>
+</div>
+<span class="check-icon hidden material-symbols-outlined text-primary text-[20px]">check_circle</span>
+</button>
+<!-- Mobile / Data promo -->
+<button class="category-btn text-left p-3 rounded-xl bg-surface-container-lowest shadow-sm flex items-center gap-3 transition-all relative overflow-hidden" onclick="selectCategory(this, 'Mobile')" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-tertiary shrink-0">
+<span class="material-symbols-outlined text-[20px]">signal_cellular_alt</span>
+</div>
+<div class="min-w-0 flex-1">
+<p class="font-label-lg text-label-lg text-on-surface font-bold truncate">Mobile Load</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant font-medium">Data promo, Wi-Fi</p>
+</div>
+<span class="check-icon hidden material-symbols-outlined text-primary text-[20px]">check_circle</span>
+</button>
+<!-- Bills & Printing -->
+<button class="category-btn text-left p-3 rounded-xl bg-surface-container-lowest shadow-sm flex items-center gap-3 transition-all relative overflow-hidden" onclick="selectCategory(this, 'Printing')" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[20px]">print</span>
+</div>
+<div class="min-w-0 flex-1">
+<p class="font-label-lg text-label-lg text-on-surface font-bold truncate">Bills &amp; Printing</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant font-medium">Photocopy, Dues</p>
+</div>
+<span class="check-icon hidden material-symbols-outlined text-primary text-[20px]">check_circle</span>
+</button>
+<!-- Personal care -->
+<button class="category-btn text-left p-3 rounded-xl bg-surface-container-lowest shadow-sm flex items-center gap-3 transition-all relative overflow-hidden" onclick="selectCategory(this, 'Personal')" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[20px]">spa</span>
+</div>
+<div class="min-w-0 flex-1">
+<p class="font-label-lg text-label-lg text-on-surface font-bold truncate">Personal Care</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant font-medium">Hygiene, Meds</p>
+</div>
+<span class="check-icon hidden material-symbols-outlined text-primary text-[20px]">check_circle</span>
+</button>
+<!-- Entertainment -->
+<button class="category-btn text-left p-3 rounded-xl bg-surface-container-lowest shadow-sm flex items-center gap-3 transition-all relative overflow-hidden" onclick="selectCategory(this, 'Entertainment')" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface shrink-0">
+<span class="material-symbols-outlined text-[20px]">sports_esports</span>
+</div>
+<div class="min-w-0 flex-1">
+<p class="font-label-lg text-label-lg text-on-surface font-bold truncate">Entertainment</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant font-medium">Games, Outing</p>
+</div>
+<span class="check-icon hidden material-symbols-outlined text-primary text-[20px]">check_circle</span>
+</button>
+<!-- Other -->
+<button class="category-btn text-left p-3 rounded-xl bg-surface-container-lowest shadow-sm flex items-center gap-3 transition-all relative overflow-hidden" onclick="selectCategory(this, 'Other')" type="button">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface shrink-0">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</div>
+<div class="min-w-0 flex-1">
+<p class="font-label-lg text-label-lg text-on-surface font-bold truncate">Other Expense</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant font-medium">Miscellaneous</p>
+</div>
+<span class="check-icon hidden material-symbols-outlined text-primary text-[20px]">check_circle</span>
+</button>
+</div>
+</div>
+<!-- Payment Source Selector -->
+<div class="mb-6">
+<span class="font-label-sm text-label-sm text-on-surface-variant tracking-wider uppercase font-bold block mb-2.5">Paid Via</span>
+<div class="grid grid-cols-4 gap-2" id="paymentSelector">
+<!-- Cash (Active) -->
+<button class="payment-pill flex flex-col items-center justify-center py-2.5 px-2 rounded-xl bg-primary text-on-primary shadow-sm font-label-md text-label-md transition-transform active:scale-95" onclick="selectPayment(this)" type="button">
+<span class="material-symbols-outlined text-[20px] mb-0.5" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span>Cash</span>
+</button>
+<!-- GCash -->
+<button class="payment-pill flex flex-col items-center justify-center py-2.5 px-2 rounded-xl bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md transition-transform active:scale-95" onclick="selectPayment(this)" type="button">
+<span class="material-symbols-outlined text-[20px] mb-0.5">account_balance_wallet</span>
+<span>GCash</span>
+</button>
+<!-- Maya -->
+<button class="payment-pill flex flex-col items-center justify-center py-2.5 px-2 rounded-xl bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md transition-transform active:scale-95" onclick="selectPayment(this)" type="button">
+<span class="material-symbols-outlined text-[20px] mb-0.5">contactless</span>
+<span>Maya</span>
+</button>
+<!-- Bank -->
+<button class="payment-pill flex flex-col items-center justify-center py-2.5 px-2 rounded-xl bg-surface-container text-on-surface hover:bg-surface-container-high font-label-md text-label-md transition-transform active:scale-95" onclick="selectPayment(this)" type="button">
+<span class="material-symbols-outlined text-[20px] mb-0.5">account_balance</span>
+<span>Bank</span>
+</button>
+</div>
+</div>
+<!-- Primary Action Button -->
+<button class="w-full h-14 rounded-full bg-primary text-on-primary font-label-lg text-label-lg font-bold flex items-center justify-center gap-2 shadow-md hover:bg-primary-container active:scale-[0.98] transition-all" id="saveExpenseBtn" onclick="handleSave()" type="button">
+<span>Save Expense</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+<script>
+  const totalDailyPondo = 180;
+  const amountInput = document.getElementById('amountInput');
+  const remainingDisplay = document.getElementById('remainingDisplay');
+  const deductedBadge = document.getElementById('deductedBadge');
+  const progressBar = document.getElementById('budgetProgressBar');
+  const safeSpendingSpan = document.getElementById('safeSpendingSpan');
+
+  function updateFeedback() {
+    const val = parseFloat(amountInput.value) || 0;
+    const remaining = Math.max(0, totalDailyPondo - val);
+    const pct = Math.min(100, Math.max(0, (remaining / totalDailyPondo) * 100));
+
+    remainingDisplay.textContent = '₱' + remaining.toFixed(2);
+    deductedBadge.textContent = '-₱' + val.toFixed(0);
+    progressBar.style.width = pct + '%';
+    safeSpendingSpan.textContent = '₱' + remaining.toFixed(0) + ' safe spending';
+
+    if (pct < 20) {
+      progressBar.classList.remove('bg-primary');
+      progressBar.classList.add('bg-error');
+    } else {
+      progressBar.classList.add('bg-primary');
+      progressBar.classList.remove('bg-error');
+    }
+  }
+
+  amountInput.addEventListener('input', updateFeedback);
+
+  function adjustAmount(delta) {
+    const current = parseFloat(amountInput.value) || 0;
+    amountInput.value = current + delta;
+    updateFeedback();
+  }
+
+  function setExactAmount(val) {
+    amountInput.value = val;
+    updateFeedback();
+  }
+
+  function selectCategory(el, catName) {
+    document.querySelectorAll('.category-btn').forEach(btn => {
+      btn.classList.remove('ring-2', 'ring-primary', 'bg-primary/5');
+      const check = btn.querySelector('.check-icon');
+      if (check) check.classList.add('hidden');
+    });
+
+    el.classList.add('ring-2', 'ring-primary', 'bg-primary/5');
+    const check = el.querySelector('.check-icon');
+    if (check) check.classList.remove('hidden');
+  }
+
+  function selectPayment(el) {
+    document.querySelectorAll('.payment-pill').forEach(pill => {
+      pill.classList.remove('bg-primary', 'text-on-primary');
+      pill.classList.add('bg-surface-container', 'text-on-surface');
+    });
+
+    el.classList.remove('bg-surface-container', 'text-on-surface');
+    el.classList.add('bg-primary', 'text-on-primary');
+  }
+
+  function handleSave() {
+    const btn = document.getElementById('saveExpenseBtn');
+    btn.innerHTML = `<span class="material-symbols-outlined animate-spin text-[20px]">sync</span><span>Recording Pondo...</span>`;
+    setTimeout(() => {
+      btn.innerHTML = `<span class="material-symbols-outlined text-[20px]">check_circle</span><span>Saved Successfully!</span>`;
+      btn.classList.add('bg-primary-container');
+      setTimeout(() => {
+        btn.innerHTML = `<span>Save Expense</span><span class="material-symbols-outlined text-[20px]">arrow_forward</span>`;
+        btn.classList.remove('bg-primary-container');
+      }, 2000);
+    }, 700);
+  }
+</script></main></body></html>

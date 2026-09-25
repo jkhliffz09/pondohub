@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#faf8ff;color:#131b2e;}body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom, 1rem);}.pt-safe{padding-top:env(safe-area-inset-top, 0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-dim":"#d2d9f4","surface-variant":"#dae2fd","tertiary":"#006194","tertiary-fixed":"#cce5ff","surface-tint":"#006c4a","secondary-fixed":"#e3dfff","surface-container-high":"#e2e7ff","on-secondary-container":"#fffbff","on-primary":"#ffffff","on-secondary-fixed":"#100069","on-tertiary":"#ffffff","on-primary-fixed-variant":"#005137","on-error-container":"#93000a","primary":"#006948","on-secondary-fixed-variant":"#372abf","surface":"#faf8ff","tertiary-container":"#007bb9","surface-container-lowest":"#ffffff","error-container":"#ffdad6","surface-container":"#eaedff","on-surface-variant":"#3d4a42","background":"#faf8ff","surface-bright":"#faf8ff","primary-container":"#00855d","outline":"#6d7a72","secondary-fixed-dim":"#c3c0ff","primary-fixed-dim":"#68dba9","on-primary-fixed":"#002114","inverse-surface":"#283044","on-tertiary-container":"#fdfcff","on-surface":"#131b2e","on-tertiary-fixed":"#001d31","surface-container-highest":"#dae2fd","on-error":"#ffffff","surface-container-low":"#f2f3ff","inverse-on-surface":"#eef0ff","tertiary-fixed-dim":"#93ccff","inverse-primary":"#68dba9","error":"#ba1a1a","on-primary-container":"#f5fff7","outline-variant":"#bccac0","secondary":"#4e45d5","on-background":"#131b2e","primary-fixed":"#85f8c4","secondary-container":"#6860ef","on-secondary":"#ffffff","on-tertiary-fixed-variant":"#004b73"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-xl":"2rem",gutter:"1rem","space-xs":"0.25rem",margin:"1.25rem","space-lg":"1.5rem","space-sm":"0.5rem","space-md":"1rem"},fontFamily:{"headline-lg":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"display-currency":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"]},fontSize:{"headline-lg":["28px",{lineHeight:"36px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-sm":["18px",{lineHeight:"24px",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"600"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"label-lg":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}],"display-currency":["36px",{lineHeight:"44px",letterSpacing:"-0.03em",fontWeight:"800"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"600"}],"body-lg":["16px",{lineHeight:"24px",fontWeight:"400"}],"body-sm":["12px",{lineHeight:"16px",fontWeight:"400"}],"headline-md":["22px",{lineHeight:"28px",letterSpacing:"-0.01em",fontWeight:"700"}]}}}};</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><button aria-label="Go Back" class="w-11 h-11 -ml-2 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container active:scale-95 transition-all" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">arrow_back</span></button><img alt="Brand logo. - Primary color: #059669
+- Font: plusJakartaSans
+- Mode: light
+- Roundness: rounded-md
+" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Vn1lXPAMjy0creoX_MLnhKD3D2FEwW0fXaWUd4JsC02Lgfn1j66ZTbh9Ozyl0xTq7CYa18-tKXYgRbhN-ayekVX9LFTfYAGS9ctQmI4A2B9qOKco4OadviqDNFDU-Wr0wbsczgOROgyUIZvU3kMc_TR1svrcj7LuUwsAaaknscEgWFXf6dKN59N9QELAL_GkCKxgCPThnQFoC_0TJMWg1k2z51YB86fdECfbKnoeiB5zFcpx97-bX3S5tr"/><h1 class="font-headline-sm text-headline-sm text-on-surface truncate">Add Expense</h1></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="flex flex-col relative w-full pt-16 pb-safe bg-surface min-h-screen px-margin"><div class="flex flex-col w-full pb-10 space-y-5">
+<!-- Friendly Sub-header Banner -->
+<section class="flex items-center justify-between bg-surface-container-low rounded-2xl p-4 shadow-sm">
+<div class="space-y-1">
+<div class="flex items-center gap-1.5 text-primary">
+<span class="material-symbols-outlined text-[18px]">lock_clock</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Pondo Vault</span>
+</div>
+<p class="font-headline-sm text-headline-sm text-on-surface">Target &amp; Protect</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant max-w-[240px]">
+        Keep this stash safely protected from your everyday baon burn rate.
+      </p>
+</div>
+<div class="relative w-16 h-16 shrink-0 rounded-2xl bg-surface-container flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A warm, charming 3D clay style illustration of an emerald piggy bank wearing glasses with a glowing golden peso coin next to it, soft studio lighting on clean background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWs7SSb1QpuU0sgcqzfqCpZ8uDhccqBPLw56TInwTKHAcFhumxE-Mfc768pOm1lzHRstgxDBfAb1IVjQcZwDTuoT6hHH9yPhDUoKAV53b7_BYHGm55zFhKwPy3JNRZqmdO_PZYHAUFq58mGuw2u04Bow2AflhcfFzpNQdCY3byhcVfoh0lRJplbgXJsMUlvbxjI5X21GhUw5A1lSGv4TcDuKKDvBzwF-685tqo-lkDH9WJalL75DzorA"/>
+</div>
+</section>
+<!-- Step 1: Goal Name -->
+<section class="bg-surface-container-lowest rounded-2xl p-4 shadow-sm space-y-2">
+<label class="flex items-center justify-between font-label-md text-label-md text-on-surface-variant" for="goal-name-input">
+<span>GOAL NAME</span>
+<span class="text-primary font-label-sm text-label-sm">Required</span>
+</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3.5 text-on-surface-variant text-[20px]">edit_note</span>
+<input class="w-full pl-11 pr-4 py-3 bg-surface-container-low text-on-surface font-label-lg text-label-lg rounded-xl focus:bg-surface-container-lowest focus:outline-none transition-all" id="goal-name-input" placeholder="e.g. New Laptop, Concert Ticket, Graduation Trip" type="text" value="New Laptop (MacBook Air M2 Fund)"/>
+</div>
+</section>
+<!-- Step 2: Category & Icon Carousel Chips -->
+<section class="bg-surface-container-lowest rounded-2xl p-4 shadow-sm space-y-3">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface-variant">CHOOSE ICON &amp; CATEGORY</label>
+<span class="font-body-sm text-body-sm text-primary font-semibold" id="active-category-label">Tech &amp; Gadgets</span>
+</div>
+<!-- Horizontal Category Scroller -->
+<div class="flex gap-2.5 overflow-x-auto pb-1 -mx-1 px-1 scrollbar-none" id="category-selector">
+<!-- 1. Tech & Gadgets (Selected by default) -->
+<button class="cat-chip active shrink-0 flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-primary text-on-primary transition-all active:scale-95 shadow-sm" data-category="Tech &amp; Gadgets" type="button">
+<span class="material-symbols-outlined text-[20px]">laptop_mac</span>
+<span class="font-label-md text-label-md whitespace-nowrap">Tech &amp; Gadgets</span>
+</button>
+<!-- 2. School & Academics -->
+<button class="cat-chip shrink-0 flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-surface-container text-on-surface transition-all active:scale-95" data-category="School &amp; Academics" type="button">
+<span class="material-symbols-outlined text-[20px] text-primary">school</span>
+<span class="font-label-md text-label-md whitespace-nowrap">School &amp; Academics</span>
+</button>
+<!-- 3. Travel & Commute -->
+<button class="cat-chip shrink-0 flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-surface-container text-on-surface transition-all active:scale-95" data-category="Travel &amp; Commute" type="button">
+<span class="material-symbols-outlined text-[20px] text-tertiary">flight_takeoff</span>
+<span class="font-label-md text-label-md whitespace-nowrap">Travel &amp; Commute</span>
+</button>
+<!-- 4. Concert & Hobbies -->
+<button class="cat-chip shrink-0 flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-surface-container text-on-surface transition-all active:scale-95" data-category="Concert &amp; Hobbies" type="button">
+<span class="material-symbols-outlined text-[20px] text-secondary">confirmation_number</span>
+<span class="font-label-md text-label-md whitespace-nowrap">Concert &amp; Hobbies</span>
+</button>
+<!-- 5. Emergency Baon -->
+<button class="cat-chip shrink-0 flex items-center gap-2 px-3.5 py-2.5 rounded-xl bg-surface-container text-on-surface transition-all active:scale-95" data-category="Emergency Baon" type="button">
+<span class="material-symbols-outlined text-[20px] text-primary">savings</span>
+<span class="font-label-md text-label-md whitespace-nowrap">Emergency Baon</span>
+</button>
+</div>
+</section>
+<!-- Step 3: Target Amount -->
+<section class="bg-surface-container-lowest rounded-2xl p-4 shadow-sm space-y-3">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface-variant">TARGET AMOUNT</label>
+<span class="font-label-sm text-label-sm text-on-surface-variant bg-surface-container px-2 py-0.5 rounded-full">PHP Peso (₱)</span>
+</div>
+<!-- Big Numerical Peso Input Block -->
+<div class="flex items-center justify-between bg-surface-container-low px-4 py-3 rounded-xl">
+<span class="font-display-currency text-display-currency text-primary shrink-0">₱</span>
+<input class="w-full text-right font-display-currency text-display-currency bg-transparent text-on-surface focus:outline-none tracking-tight" id="target-amount-input" inputmode="numeric" type="text" value="15,000"/>
+</div>
+<!-- Quick Increment Pills -->
+<div class="grid grid-cols-4 gap-1.5 pt-1">
+<button class="py-2 rounded-lg bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-label-sm text-label-sm active:scale-95 transition-all text-center" onclick="addAmount(1000)" type="button">
+        +₱1,000
+      </button>
+<button class="py-2 rounded-lg bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-label-sm text-label-sm active:scale-95 transition-all text-center" onclick="addAmount(3000)" type="button">
+        +₱3,000
+      </button>
+<button class="py-2 rounded-lg bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-label-sm text-label-sm active:scale-95 transition-all text-center" onclick="addAmount(5000)" type="button">
+        +₱5,000
+      </button>
+<button class="py-2 rounded-lg bg-surface-container text-on-surface-variant hover:bg-surface-container-high font-label-sm text-label-sm active:scale-95 transition-all text-center" onclick="addAmount(10000)" type="button">
+        +₱10,000
+      </button>
+</div>
+</section>
+<!-- Step 4: Initial Deposit / Current Savings -->
+<section class="bg-surface-container-lowest rounded-2xl p-4 shadow-sm space-y-3">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface-variant">INITIAL DEPOSIT / SAVED</label>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Optional jumpstart</span>
+</div>
+<div class="flex items-center justify-between bg-surface-container-low px-4 py-2.5 rounded-xl">
+<span class="font-headline-md text-headline-md text-primary shrink-0">₱</span>
+<input class="w-full text-right font-headline-md text-headline-md bg-transparent text-on-surface focus:outline-none" id="initial-deposit-input" inputmode="numeric" type="text" value="6,000"/>
+</div>
+<!-- Funding Source Switcher -->
+<div class="bg-surface-container-low p-3 rounded-xl space-y-2">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wide">Funding Method</p>
+<div class="grid grid-cols-2 gap-2">
+<label class="flex items-center gap-2.5 p-2 rounded-lg bg-surface-container-lowest shadow-sm cursor-pointer">
+<input checked="" class="w-4 h-4 text-primary accent-primary" name="funding_source" type="radio"/>
+<div class="min-w-0">
+<p class="font-label-sm text-label-sm text-on-surface truncate">Manual Tracking</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant truncate">Already in cash / piggy</p>
+</div>
+</label>
+<label class="flex items-center gap-2.5 p-2 rounded-lg bg-surface-container cursor-pointer opacity-90">
+<input class="w-4 h-4 text-primary accent-primary" name="funding_source" type="radio"/>
+<div class="min-w-0">
+<p class="font-label-sm text-label-sm text-on-surface truncate">Available Pondo</p>
+<p class="font-body-sm text-body-sm text-primary font-semibold truncate">₱1,250 ready</p>
+</div>
+</label>
+</div>
+</div>
+</section>
+<!-- Step 5: Target Date & Quick Presets -->
+<section class="bg-surface-container-lowest rounded-2xl p-4 shadow-sm space-y-3">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface-variant">TARGET DATE</label>
+<span class="font-body-sm text-body-sm text-on-surface-variant" id="target-countdown">~22 months away</span>
+</div>
+<!-- Date Picker Surface -->
+<div class="flex items-center justify-between bg-surface-container-low px-4 py-3 rounded-xl cursor-pointer">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-primary text-[22px]">calendar_today</span>
+<span class="font-label-lg text-label-lg text-on-surface" id="selected-date-display">December 2026</span>
+</div>
+<span class="font-label-sm text-label-sm bg-surface-container px-2.5 py-1 rounded-full text-on-surface-variant">Change</span>
+</div>
+<!-- Quick Presets -->
+<div class="grid grid-cols-4 gap-1.5">
+<button class="preset-pill py-2 rounded-lg bg-surface-container text-on-surface-variant font-label-sm text-label-sm text-center hover:bg-surface-container-high active:scale-95 transition-all" onclick="setPresetDuration('3 Months', 3)" type="button">
+        3 Mos
+      </button>
+<button class="preset-pill py-2 rounded-lg bg-surface-container text-on-surface-variant font-label-sm text-label-sm text-center hover:bg-surface-container-high active:scale-95 transition-all" onclick="setPresetDuration('6 Months', 6)" type="button">
+        6 Mos
+      </button>
+<button class="preset-pill py-2 rounded-lg bg-surface-container text-on-surface-variant font-label-sm text-label-sm text-center hover:bg-surface-container-high active:scale-95 transition-all" onclick="setPresetDuration('1 Year', 12)" type="button">
+        1 Year
+      </button>
+<button class="preset-pill py-2 rounded-lg bg-surface-container text-on-surface-variant font-label-sm text-label-sm text-center hover:bg-surface-container-high active:scale-95 transition-all" onclick="setPresetDuration('End of Sem', 4)" type="button">
+        End Sem
+      </button>
+</div>
+</section>
+<!-- Step 6: Automated Smart Pace Calculator (Pondo Magic) -->
+<section class="relative overflow-hidden bg-primary text-on-primary rounded-2xl p-4 shadow-md space-y-3.5">
+<!-- Decorative subtle glow orb -->
+<div class="absolute -right-6 -bottom-6 w-32 h-32 bg-primary-container/40 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between relative z-10">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed text-[22px]">auto_awesome</span>
+<span class="font-label-md text-label-md tracking-wider uppercase text-primary-fixed">Pondo Magic Calculator</span>
+</div>
+<span class="bg-primary-container/60 text-on-primary font-label-sm text-label-sm px-2.5 py-0.5 rounded-full">Automated</span>
+</div>
+<!-- Breakdown Stats Grid -->
+<div class="grid grid-cols-2 gap-2 relative z-10">
+<div class="bg-primary-container/40 p-3 rounded-xl">
+<p class="font-body-sm text-body-sm text-primary-fixed-dim">Required Pace</p>
+<p class="font-headline-sm text-headline-sm text-on-primary mt-0.5">~₱150<span class="font-body-sm text-body-sm text-primary-fixed-dim font-normal"> /week</span></p>
+</div>
+<div class="bg-primary-container/40 p-3 rounded-xl">
+<p class="font-body-sm text-body-sm text-primary-fixed-dim">Daily Baon Impact</p>
+<p class="font-headline-sm text-headline-sm text-on-primary mt-0.5">~₱22<span class="font-body-sm text-body-sm text-primary-fixed-dim font-normal"> /day</span></p>
+</div>
+</div>
+<!-- Progress Snapshot -->
+<div class="space-y-1.5 relative z-10">
+<div class="flex justify-between font-label-sm text-label-sm text-primary-fixed-dim">
+<span>Initial funded: 40%</span>
+<span>₱9,000 remaining</span>
+</div>
+<div class="w-full h-2 rounded-full bg-primary-container/70 overflow-hidden">
+<div class="h-full bg-primary-fixed rounded-full w-[40%]"></div>
+</div>
+</div>
+<div class="flex items-start gap-2 pt-1 relative z-10">
+<span class="material-symbols-outlined text-[18px] text-primary-fixed shrink-0 mt-0.5">verified_user</span>
+<p class="font-body-sm text-body-sm text-on-primary/90">
+        This goal will be safely locked from your <strong class="text-primary-fixed">Today's Pondo</strong> safe-to-spend computation.
+      </p>
+</div>
+</section>
+<!-- Visual Motivation Card with placeholder -->
+<section class="flex items-center gap-3 bg-surface-container-low rounded-2xl p-3">
+<div class="w-14 h-14 shrink-0 rounded-xl overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="A clean student desk setup with a modern slim laptop, iced coffee in a tumbler, spiral notebook and natural sunlight casting calm shadows, aesthetic minimalist photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnq1l39gaJqryB1UzvO9-GV0WLSgAmsV4IXQUmtWXsuDnZ_BSV29uCodUsSkPz9MnwkBJb6MjfQnbq9QSFtQr6BhdBrJfHQItZnfynBq1pGr2FHA1Er-3VH6e0KtJH3TpplZpaTx-CbrxZsN_3ctrxCVX7vrXdEkjutIxTJXE4uB21B4KO-UNdPLTWyloilYwARBuUQHrHxUZ1piu8iw9zxZogWYlIQjTLlGRfm7bm7VNFj0-1kRhNxg"/>
+</div>
+<div class="min-w-0 flex-1">
+<p class="font-label-md text-label-md text-on-surface truncate">Dream it, track it, own it.</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Small everyday savings create giant wins by graduation.</p>
+</div>
+</section>
+<!-- Primary Action & Subtle Legal Disclaimer -->
+<div class="space-y-3 pt-2">
+<button class="w-full h-[52px] rounded-full bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg flex items-center justify-center gap-2 shadow-md active:scale-[0.98] transition-all" id="submit-goal-btn" type="button">
+<span>Create Goal</span>
+<span class="text-[18px]">🎯</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<div class="flex items-center justify-center gap-1.5 px-3 text-center">
+<span class="material-symbols-outlined text-[14px] text-outline">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+        Pondo Hub is a ledger tool for mindful habits and does not hold actual bank deposits.
+      </p>
+</div>
+</div>
+</div>
+<script>
+  // Dynamic Category Chip Selector
+  const categoryChips = document.querySelectorAll('.cat-chip');
+  const activeCategoryLabel = document.getElementById('active-category-label');
+
+  categoryChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      categoryChips.forEach(c => {
+        c.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+        c.classList.add('bg-surface-container', 'text-on-surface');
+      });
+      chip.classList.remove('bg-surface-container', 'text-on-surface');
+      chip.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+      const cat = chip.getAttribute('data-category');
+      if (activeCategoryLabel) {
+        activeCategoryLabel.textContent = cat;
+      }
+    });
+  });
+
+  // Quick Amount Helper
+  function addAmount(delta) {
+    const input = document.getElementById('target-amount-input');
+    if (!input) return;
+    const current = parseInt(input.value.replace(/,/g, ''), 10) || 0;
+    const next = current + delta;
+    input.value = next.toLocaleString('en-US');
+  }
+
+  // Quick Duration Preset Helper
+  function setPresetDuration(label, months) {
+    const display = document.getElementById('selected-date-display');
+    const countdown = document.getElementById('target-countdown');
+    const now = new Date();
+    now.setMonth(now.getMonth() + months);
+    const options = { month: 'long', year: 'numeric' };
+    const formatted = now.toLocaleDateString('en-US', options);
+    if (display) display.textContent = formatted;
+    if (countdown) countdown.textContent = `~${months} months away`;
+  }
+
+  // Visual button click ripple feedback
+  const submitBtn = document.getElementById('submit-goal-btn');
+  if (submitBtn) {
+    submitBtn.addEventListener('click', () => {
+      submitBtn.innerHTML = `<span>Goal Created! 🚀</span>`;
+      submitBtn.classList.add('bg-primary-container');
+      setTimeout(() => {
+        submitBtn.innerHTML = `<span>Create Goal</span> <span class="text-[18px]">🎯</span> <span class="material-symbols-outlined text-[20px]">arrow_forward</span>`;
+      }, 2000);
+    });
+  }
+</script></main></body></html>

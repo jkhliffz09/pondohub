@@ -1,0 +1,26 @@
+export const c = {
+  bg: '#F8F9FC',
+  card: '#FFFFFF',
+  ink: '#182F2A',
+  muted: '#77847E',
+  green: '#087F5B',
+  greenDark: '#076047',
+  mint: '#E9F5EF',
+  lime: '#D8F1A0',
+  line: '#E8ECE9',
+  purple: '#7763BC',
+  lavender: '#F0ECF9',
+  red: '#BD5D59',
+  pink: '#FBEFED',
+  blue: '#458CB2',
+  blueTint: '#EDF5FB',
+  amber: '#A97823',
+  amberTint: '#FFF5E1',
+};
+export const font = {
+  regular: 'Jakarta',
+  medium: 'JakartaMedium',
+  semi: 'JakartaSemi',
+  bold: 'JakartaBold',
+  extra: 'JakartaExtra',
+};

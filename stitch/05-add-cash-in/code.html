@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{width:100vw;margin:0;padding:0;background-color:#faf8ff;color:#131b2e;}body{overscroll-behavior:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom, 1rem);}.pt-safe{padding-top:env(safe-area-inset-top, 0px);}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-dim":"#d2d9f4","surface-variant":"#dae2fd","tertiary":"#006194","tertiary-fixed":"#cce5ff","surface-tint":"#006c4a","secondary-fixed":"#e3dfff","surface-container-high":"#e2e7ff","on-secondary-container":"#fffbff","on-primary":"#ffffff","on-secondary-fixed":"#100069","on-tertiary":"#ffffff","on-primary-fixed-variant":"#005137","on-error-container":"#93000a","primary":"#006948","on-secondary-fixed-variant":"#372abf","surface":"#faf8ff","tertiary-container":"#007bb9","surface-container-lowest":"#ffffff","error-container":"#ffdad6","surface-container":"#eaedff","on-surface-variant":"#3d4a42","background":"#faf8ff","surface-bright":"#faf8ff","primary-container":"#00855d","outline":"#6d7a72","secondary-fixed-dim":"#c3c0ff","primary-fixed-dim":"#68dba9","on-primary-fixed":"#002114","inverse-surface":"#283044","on-tertiary-container":"#fdfcff","on-surface":"#131b2e","on-tertiary-fixed":"#001d31","surface-container-highest":"#dae2fd","on-error":"#ffffff","surface-container-low":"#f2f3ff","inverse-on-surface":"#eef0ff","tertiary-fixed-dim":"#93ccff","inverse-primary":"#68dba9","error":"#ba1a1a","on-primary-container":"#f5fff7","outline-variant":"#bccac0","secondary":"#4e45d5","on-background":"#131b2e","primary-fixed":"#85f8c4","secondary-container":"#6860ef","on-secondary":"#ffffff","on-tertiary-fixed-variant":"#004b73"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-xl":"2rem",gutter:"1rem","space-xs":"0.25rem",margin:"1.25rem","space-lg":"1.5rem","space-sm":"0.5rem","space-md":"1rem"},fontFamily:{"headline-lg":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"label-md":["Plus Jakarta Sans"],"body-md":["Plus Jakarta Sans"],"label-lg":["Plus Jakarta Sans"],"display-currency":["Plus Jakarta Sans"],"label-sm":["Plus Jakarta Sans"],"body-lg":["Plus Jakarta Sans"],"body-sm":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"]},fontSize:{"headline-lg":["28px",{lineHeight:"36px",letterSpacing:"-0.02em",fontWeight:"700"}],"headline-sm":["18px",{lineHeight:"24px",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"600"}],"body-md":["14px",{lineHeight:"20px",fontWeight:"400"}],"label-lg":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}],"display-currency":["36px",{lineHeight:"44px",letterSpacing:"-0.03em",fontWeight:"800"}],"label-sm":["11px",{lineHeight:"14px",letterSpacing:"0.04em",fontWeight:"600"}],"body-lg":["16px",{lineHeight:"24px",fontWeight:"400"}],"body-sm":["12px",{lineHeight:"16px",fontWeight:"400"}],"headline-md":["22px",{lineHeight:"28px",letterSpacing:"-0.01em",fontWeight:"700"}]}}}};</script><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><header class="fixed top-0 w-full z-50 pt-safe bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.03)]"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><button aria-label="Go Back" class="w-11 h-11 -ml-2 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container active:scale-95 transition-all" onclick="history.back()"><span class="material-symbols-outlined text-[24px]">arrow_back</span></button><img alt="Brand logo. - Primary color: #059669
+- Font: plusJakartaSans
+- Mode: light
+- Roundness: rounded-md
+" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Vn1lXPAMjy0creoX_MLnhKD3D2FEwW0fXaWUd4JsC02Lgfn1j66ZTbh9Ozyl0xTq7CYa18-tKXYgRbhN-ayekVX9LFTfYAGS9ctQmI4A2B9qOKco4OadviqDNFDU-Wr0wbsczgOROgyUIZvU3kMc_TR1svrcj7LuUwsAaaknscEgWFXf6dKN59N9QELAL_GkCKxgCPThnQFoC_0TJMWg1k2z51YB86fdECfbKnoeiB5zFcpx97-bX3S5tr"/><h1 class="font-headline-sm text-headline-sm text-on-surface truncate">Add Expense</h1></div><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="flex flex-col relative w-full pt-16 pb-safe bg-surface min-h-screen px-margin"><div class="flex flex-col w-full pb-8 space-y-space-md">
+<!-- Contextual Subtitle -->
+<div class="flex items-center justify-between pt-1">
+<div>
+<p class="font-body-md text-body-md text-on-surface-variant">Record money added to your allowance</p>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-high px-space-sm py-1 rounded-full text-secondary">
+<span class="material-symbols-outlined text-[16px]">savings</span>
+<span class="font-label-sm text-label-sm">Safe Budgeting</span>
+</div>
+</div>
+<!-- Hero Amount Input Card -->
+<div class="relative overflow-hidden bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Amount Received</span>
+<span class="inline-flex items-center gap-1 text-primary font-label-sm text-label-sm bg-primary-fixed/30 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px]">arrow_downward_alt</span> Instant Inflow
+      </span>
+</div>
+<!-- Currency Display -->
+<div class="flex items-baseline justify-start space-x-1 py-1">
+<span class="font-headline-lg text-headline-lg text-primary font-bold select-none">₱</span>
+<div class="relative flex-1">
+<input aria-label="Cash-in amount" class="w-full bg-transparent font-display-currency text-display-currency text-on-surface outline-none focus:text-primary transition-colors placeholder:text-outline-variant tracking-tight p-0 m-0" id="amount-input" placeholder="0" type="number" value="1000"/>
+</div>
+</div>
+<div class="h-1 w-full bg-surface-container rounded-full mt-2 overflow-hidden">
+<div class="h-full bg-primary w-2/3 rounded-full"></div>
+</div>
+<!-- Quick Increment Chips -->
+<div class="mt-space-md flex flex-wrap gap-2">
+<button class="px-3 py-1.5 rounded-full bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high active:scale-95 transition-all" onclick="addAmount(200)" type="button">
+        +₱200
+      </button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high active:scale-95 transition-all" onclick="addAmount(500)" type="button">
+        +₱500
+      </button>
+<button class="px-3 py-1.5 rounded-full bg-primary text-on-primary font-label-md text-label-md shadow-sm active:scale-95 transition-all" onclick="setAmount(1000)" type="button">
+        ₱1,000
+      </button>
+<button class="px-3 py-1.5 rounded-full bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high active:scale-95 transition-all" onclick="addAmount(2000)" type="button">
+        +₱2,000
+      </button>
+</div>
+</div>
+<!-- Source of Funds Selector -->
+<div class="flex flex-col space-y-space-sm">
+<div class="flex items-center justify-between">
+<label class="font-headline-sm text-headline-sm text-on-surface">Source of Funds</label>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Choose channel</span>
+</div>
+<div class="grid grid-cols-2 gap-2" id="source-group">
+<!-- Cash (Selected) -->
+<button class="source-card group flex items-center justify-between p-3 rounded-lg bg-surface-container-lowest text-left shadow-sm transition-all" data-source="Cash" onclick="selectSource(this, 'Cash')" type="button">
+<div class="flex items-center space-x-2.5">
+<div class="w-9 h-9 rounded-full bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</div>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface">Physical Cash</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Pocket baon</div>
+</div>
+</div>
+<div class="status-indicator w-5 h-5 rounded-full bg-primary text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+</button>
+<!-- GCash -->
+<button class="source-card group flex items-center justify-between p-3 rounded-lg bg-surface-container-lowest text-left shadow-sm opacity-80 hover:opacity-100 transition-all" data-source="GCash" onclick="selectSource(this, 'GCash')" type="button">
+<div class="flex items-center space-x-2.5">
+<div class="w-9 h-9 rounded-full bg-tertiary-fixed text-tertiary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+</div>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface">GCash</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">e-Wallet</div>
+</div>
+</div>
+<div class="status-indicator w-5 h-5 rounded-full bg-surface-container flex items-center justify-center"></div>
+</button>
+<!-- Maya -->
+<button class="source-card group flex items-center justify-between p-3 rounded-lg bg-surface-container-lowest text-left shadow-sm opacity-80 hover:opacity-100 transition-all" data-source="Maya" onclick="selectSource(this, 'Maya')" type="button">
+<div class="flex items-center space-x-2.5">
+<div class="w-9 h-9 rounded-full bg-secondary-fixed text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">phone_iphone</span>
+</div>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface">Maya</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">e-Wallet</div>
+</div>
+</div>
+<div class="status-indicator w-5 h-5 rounded-full bg-surface-container flex items-center justify-center"></div>
+</button>
+<!-- Bank Transfer -->
+<button class="source-card group flex items-center justify-between p-3 rounded-lg bg-surface-container-lowest text-left shadow-sm opacity-80 hover:opacity-100 transition-all" data-source="Bank" onclick="selectSource(this, 'Bank Transfer')" type="button">
+<div class="flex items-center space-x-2.5">
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">account_balance</span>
+</div>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface">Bank Transfer</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">BDO, BPI, etc.</div>
+</div>
+</div>
+<div class="status-indicator w-5 h-5 rounded-full bg-surface-container flex items-center justify-center"></div>
+</button>
+</div>
+<!-- Full-width Other / Gift option -->
+<button class="source-card group flex items-center justify-between p-3 rounded-lg bg-surface-container-lowest text-left shadow-sm opacity-80 hover:opacity-100 transition-all w-full" data-source="Gift" onclick="selectSource(this, 'Other / Gift')" type="button">
+<div class="flex items-center space-x-2.5">
+<div class="w-9 h-9 rounded-full bg-error-container text-error flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">featured_seasonal_and_gifts</span>
+</div>
+<div>
+<div class="font-label-lg text-label-lg text-on-surface">Other / Family Gift</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Stipend, aguinaldo, rewards</div>
+</div>
+</div>
+<div class="status-indicator w-5 h-5 rounded-full bg-surface-container flex items-center justify-center"></div>
+</button>
+</div>
+<!-- Form Details -->
+<div class="flex flex-col space-y-space-sm bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<!-- Date Field -->
+<div class="flex flex-col space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Date Received</label>
+<div class="flex items-center justify-between bg-surface-container-low px-space-md py-2.5 rounded-lg">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary text-[20px]">calendar_today</span>
+<span class="font-label-lg text-label-lg text-on-surface">Today, Sep 16, 2025</span>
+</div>
+<button class="text-primary font-label-md text-label-md" type="button">Change</button>
+</div>
+</div>
+<!-- Allowance Allocation -->
+<div class="flex flex-col space-y-1.5 pt-1">
+<label class="font-label-md text-label-md text-on-surface-variant">Target Bucket / Allocation</label>
+<div class="grid grid-cols-3 gap-1.5" id="allocation-group">
+<button class="alloc-chip py-2 px-1 text-center rounded-lg bg-primary text-on-primary font-label-sm text-label-sm truncate shadow-sm transition-all" onclick="setAllocation(this)" type="button">
+          Weekly Baon
+        </button>
+<button class="alloc-chip py-2 px-1 text-center rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm truncate hover:bg-surface-container-high transition-all" onclick="setAllocation(this)" type="button">
+          Project Grant
+        </button>
+<button class="alloc-chip py-2 px-1 text-center rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm truncate hover:bg-surface-container-high transition-all" onclick="setAllocation(this)" type="button">
+          Extra / Gift
+        </button>
+</div>
+</div>
+<!-- Notes & Reference -->
+<div class="flex flex-col space-y-1 pt-1">
+<div class="flex items-center justify-between">
+<label class="font-label-md text-label-md text-on-surface-variant">Reference / Notes</label>
+<span class="font-body-sm text-body-sm text-outline">Optional</span>
+</div>
+<div class="relative bg-surface-container-low rounded-lg p-2.5 flex items-center">
+<input class="w-full bg-transparent font-body-md text-body-md text-on-surface outline-none placeholder:text-outline-variant" placeholder="e.g., Weekly school allowance" type="text" value="Baon from Nanay via GCash"/>
+<span class="material-symbols-outlined text-outline-variant text-[20px] ml-2">edit_note</span>
+</div>
+</div>
+</div>
+<!-- Warm Micro-Visual Card -->
+<div class="flex items-center space-x-3 bg-surface-container-low p-space-sm rounded-xl">
+<div class="w-14 h-14 rounded-lg overflow-hidden shrink-0 bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Philippine university student warmly smiling at coffee desk while checking phone budget notes, warm morning sunlight, natural green foliage background, modern soft color grading" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjQ37zo9Xw5gxOWnwjmrCyBdtPcQ4PnmsybGU5HwVxYMBALbUeGsHAFQIQooSSQh2t_jUxXaL51h2TflBjru8AKX1Fe4PafVWpSW5PHrEsIikB478B1OBXMiqf3mjaL1oprMxXd1TW2SCmJyOOFhTx7Q9M_zVDnZsLQg4J5KyitZvhXClvbYpaIDyVIzCu0hpp5iJdiBOs_BfpY7bY_iNT2iQUYRi2HKugaNvax5XBvAelwxL7w-AqVA"/>
+</div>
+<div class="min-w-0 flex-1">
+<div class="font-label-md text-label-md text-on-surface truncate">Keeps your daily pace balanced</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Adding ₱1,000 increases your safe daily allowance pace by ₱142/day this week.</p>
+</div>
+</div>
+<!-- Soft Disclaimer Banner -->
+<div class="flex items-start space-x-2.5 bg-tertiary-fixed/30 p-space-md rounded-xl text-on-surface">
+<span class="material-symbols-outlined text-tertiary text-[20px] shrink-0 mt-0.5" style="font-variation-settings: 'FILL' 1;">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+<span class="font-label-md text-label-md text-on-surface">Pondo Hub</span> records the source of your money for tracking and daily pace calculation, but does not hold or transfer actual funds.
+    </p>
+</div>
+<!-- Action CTA Area (Sticky-feel bottom placement) -->
+<div class="pt-2">
+<button class="w-full h-[52px] rounded-full bg-primary text-on-primary font-label-lg text-label-lg flex items-center justify-center space-x-2 shadow-md active:scale-[0.98] transition-transform" id="submit-cta" onclick="completeCashIn()" type="button">
+<span id="cta-label">Add ₱1,000 to Pondo</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<script>
+  function formatPeso(val) {
+    const num = parseFloat(val) || 0;
+    return num.toLocaleString('en-US');
+  }
+
+  function updateCta(amount) {
+    const ctaLabel = document.getElementById('cta-label');
+    ctaLabel.textContent = `Add ₱${formatPeso(amount)} to Pondo`;
+  }
+
+  function addAmount(delta) {
+    const input = document.getElementById('amount-input');
+    const current = parseFloat(input.value) || 0;
+    const next = current + delta;
+    input.value = next;
+    updateCta(next);
+  }
+
+  function setAmount(value) {
+    const input = document.getElementById('amount-input');
+    input.value = value;
+    updateCta(value);
+  }
+
+  const amountInput = document.getElementById('amount-input');
+  amountInput.addEventListener('input', (e) => {
+    updateCta(e.target.value);
+  });
+
+  function selectSource(buttonElement, sourceName) {
+    const cards = document.querySelectorAll('.source-card');
+    cards.forEach(card => {
+      card.classList.remove('opacity-100');
+      card.classList.add('opacity-80');
+      const indicator = card.querySelector('.status-indicator');
+      indicator.className = 'status-indicator w-5 h-5 rounded-full bg-surface-container flex items-center justify-center';
+      indicator.innerHTML = '';
+    });
+
+    buttonElement.classList.remove('opacity-80');
+    buttonElement.classList.add('opacity-100');
+    const activeIndicator = buttonElement.querySelector('.status-indicator');
+    activeIndicator.className = 'status-indicator w-5 h-5 rounded-full bg-primary text-on-primary flex items-center justify-center';
+    activeIndicator.innerHTML = '<span class="material-symbols-outlined text-[14px]">check</span>';
+  }
+
+  function setAllocation(btn) {
+    const chips = document.querySelectorAll('.alloc-chip');
+    chips.forEach(c => {
+      c.className = 'alloc-chip py-2 px-1 text-center rounded-lg bg-surface-container text-on-surface font-label-sm text-label-sm truncate hover:bg-surface-container-high transition-all';
+    });
+    btn.className = 'alloc-chip py-2 px-1 text-center rounded-lg bg-primary text-on-primary font-label-sm text-label-sm truncate shadow-sm transition-all';
+  }
+
+  function completeCashIn() {
+    const btn = document.getElementById('submit-cta');
+    btn.classList.add('bg-primary-container');
+    btn.innerHTML = `
+      <span class="material-symbols-outlined text-[20px] animate-bounce">check_circle</span>
+      <span class="font-label-lg text-label-lg">Added to Pondo!</span>
+    `;
+    setTimeout(() => {
+      window.history.back();
+    }, 600);
+  }
+</script></main></body></html>
