@@ -35,6 +35,12 @@
         }
       ]
     ],
-    "scheme": "pondohub"
+    "scheme": "pondohub",
+    "extra": {
+      "eas": {
+        "projectId": "df90fb0e-a57e-472e-aae0-8a1baae3ab42"
+      }
+    },
+    "owner": "jrvsai"
   }
 }
