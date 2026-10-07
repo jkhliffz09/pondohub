@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "engines": {
-    "node": ">=22.13.0"
+    "node": "24.x"
   },
   "scripts": {
     "dev": "concurrently -n api,mobile -c green,magenta \"npm run dev -w @pondo/api\" \"npm run start -w @pondo/mobile\"",
@@ -16,7 +16,9 @@
     "api": "npm run dev -w @pondo/api",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "test": "tsx --test tests/*.test.ts",
-    "export": "npm run export -w @pondo/mobile"
+    "export": "npm run export -w @pondo/mobile",
+    "build:web": "npm run export:web -w @pondo/mobile",
+    "build:api": "node scripts/build-api.mjs"
   },
   "devDependencies": {
     "@electric-sql/pglite": "0.5.8",
@@ -24,6 +26,7 @@
     "@types/express": "5.0.6",
     "@types/node": "26.6.2",
     "concurrently": "10.0.5",
+    "esbuild": "0.28.2",
     "prettier": "3.9.9",
     "react-native-safe-area-context": "5.7.0",
     "react-native-screens": "4.26.2",
@@ -32,6 +35,7 @@
   },
   "overrides": {
     "react-native-safe-area-context": "5.7.0",
-    "react-native-screens": "4.26.2"
+    "react-native-screens": "4.26.2",
+    "shell-quote": "1.12.0"
   }
 }

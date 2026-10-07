@@ -11,6 +11,8 @@ export interface Config {
   supabaseUrl?: string;
   supabaseKey?: string;
   origins?: string[];
+  apkUrl?: string;
+  trustProxy?: number;
 }
 const positive = z.number().int().min(1).max(100_000_000);
 const date = z
@@ -85,6 +87,7 @@ function unwrap<T>(result: { data: T; error: { message: string; code?: string } 
 export function createApp(config: Config) {
   const app = express();
   app.disable('x-powered-by');
+  if (config.trustProxy !== undefined) app.set('trust proxy', config.trustProxy);
   app.use(helmet());
   app.use(
     cors({
@@ -107,7 +110,28 @@ export function createApp(config: Config) {
       legacyHeaders: false,
     }),
   );
-  app.get('/health', (_req, res) =>
+  // Publish download availability without requiring an account. Never invent a file URL.
+  const apkUrl = (() => {
+    try {
+      const url = new URL(config.apkUrl || '');
+      return url.protocol === 'https:' && !url.username && !url.password ? url.href : null;
+    } catch {
+      return null;
+    }
+  })();
+  app.get('/api/downloads/android', (_req, res) => {
+    res.setHeader('Cache-Control', 'no-store');
+    res.json({ available: Boolean(apkUrl), url: apkUrl });
+  });
+  app.get('/api/downloads/android/file', (_req, res) => {
+    res.setHeader('Cache-Control', 'no-store');
+    if (!apkUrl) {
+      res.status(404).json({ error: 'The Android APK has not been published yet.' });
+      return;
+    }
+    res.redirect(302, apkUrl);
+  });
+  app.get(['/health', '/api/health'], (_req, res) =>
     res.json({
       status: 'ok',
       service: 'pondo-api',

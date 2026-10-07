@@ -41,7 +41,8 @@
     "ios": "expo start --ios --go",
     "web": "expo start --web --go",
     "typecheck": "tsc --noEmit",
-    "export": "expo export --platform all"
+    "export": "expo export --platform all",
+    "export:web": "expo export --platform web"
   },
   "private": true
 }

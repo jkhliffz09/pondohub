@@ -1,6 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { View, Platform } from 'react-native';
-import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
+import {
+  NavigationContainer,
+  DefaultTheme,
+  type LinkingOptions,
+  type ParamListBase,
+} from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -14,7 +19,8 @@ import { PlusJakartaSans_800ExtraBold } from '@expo-google-fonts/plus-jakarta-sa
 import { StoreProvider, useStore } from './src/lib/store';
 import { Icon, T, Button, Card } from './src/components/ui';
 import { c, font } from './src/theme';
-import { Splash, Welcome, AuthScreen } from './src/screens/Auth';
+import { Splash, AuthScreen } from './src/screens/Auth';
+import { Landing } from './src/screens/Landing';
 import { Home } from './src/screens/Home';
 import { MoneyForm, Afford } from './src/screens/Money';
 import { Savings, CreateGoal, Contribute } from './src/screens/Savings';
@@ -115,17 +121,46 @@ function Navigation() {
     );
   return (
     <NavigationContainer
+      key={store.data ? 'member' : 'public'}
+      linking={
+        {
+          prefixes: ['pondohub://'],
+          config: {
+            screens: store.data
+              ? {
+                  Tabs: {
+                    path: 'app',
+                    screens: {
+                      Home: '',
+                      History: 'history',
+                      Savings: 'savings',
+                      Insights: 'insights',
+                      Profile: 'profile',
+                      Alerts: 'alerts',
+                    },
+                  },
+                }
+              : { Welcome: '', Login: 'login', Register: 'register' },
+          },
+        } as LinkingOptions<ParamListBase>
+      }
       theme={{
         ...DefaultTheme,
         colors: { ...DefaultTheme.colors, background: c.bg, primary: c.green },
       }}
     >
       <Stack.Navigator
-        screenOptions={{
+        initialRouteName={store.data ? 'Tabs' : 'Welcome'}
+        screenOptions={({ route }) => ({
           headerShown: false,
-          contentStyle: { backgroundColor: c.bg },
+          contentStyle: {
+            backgroundColor: c.bg,
+            width: '100%',
+            alignSelf: 'center',
+            maxWidth: Platform.OS === 'web' && route.name !== 'Welcome' ? 480 : undefined,
+          },
           animation: 'slide_from_right',
-        }}
+        })}
       >
         {store.data ? (
           <>
@@ -144,7 +179,7 @@ function Navigation() {
           </>
         ) : (
           <>
-            <Stack.Screen name="Welcome" component={Welcome} />
+            <Stack.Screen name="Welcome" component={Landing} />
             <Stack.Screen name="Register" component={AuthScreen} />
             <Stack.Screen name="Login" component={AuthScreen} />
           </>
@@ -175,7 +210,7 @@ export default function App() {
           style={{
             flex: 1,
             width: '100%',
-            maxWidth: Platform.OS === 'web' ? 480 : undefined,
+
             boxShadow: Platform.OS === 'web' ? '0 0 70px rgba(24, 47, 42, .07)' : undefined,
           }}
         >

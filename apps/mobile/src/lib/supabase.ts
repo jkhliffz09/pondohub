@@ -52,10 +52,10 @@ export const supabase =
         },
       })
     : null;
-const configuredApi = (process.env.EXPO_PUBLIC_API_URL || 'http://localhost:3001').replace(
-  /\/$/,
-  '',
-);
+const configuredApi = (
+  process.env.EXPO_PUBLIC_API_URL ||
+  (Platform.OS === 'web' && !__DEV__ ? '' : 'http://localhost:3001')
+).replace(/\/$/, '');
 const developmentHost = Constants.expoConfig?.hostUri?.split(':')[0];
 export const apiUrl =
   __DEV__ && Platform.OS !== 'web' && developmentHost

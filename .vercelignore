@@ -1,0 +1,10 @@
+.git
+node_modules
+**/node_modules
+**/.env
+**/.env.*
+**/.expo
+**/dist
+stitch
+pondo-hub-stitch-screens.zip
+supabase/.temp

@@ -261,7 +261,15 @@ export function AuthScreen({ navigation, route }: { navigation: any; route: any 
         const { data, error } = await supabase.auth.signUp({
           email: email.trim(),
           password,
-          options: { data: { name: name.trim(), role } },
+          options: {
+            data: { name: name.trim(), role },
+            emailRedirectTo:
+              Platform.OS === 'web'
+                ? `${window.location.origin}/login`
+                : process.env.EXPO_PUBLIC_SITE_URL
+                  ? `${process.env.EXPO_PUBLIC_SITE_URL.replace(/\/$/, '')}/login`
+                  : undefined,
+          },
         });
         if (error) throw error;
         if (!data.session)
@@ -286,7 +294,9 @@ export function AuthScreen({ navigation, route }: { navigation: any; route: any 
           <Pressable
             accessibilityRole="button"
             accessibilityLabel="Go back"
-            onPress={() => navigation.goBack()}
+            onPress={() =>
+              navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Welcome')
+            }
           >
             <Icon name="arrow-back" color={c.ink} />
           </Pressable>

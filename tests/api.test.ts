@@ -53,3 +53,30 @@ test('transaction input rejects owner injection, impossible dates, and fractiona
   ])
     assert.equal(transactionSchema.safeParse({ ...valid, ...change }).success, false);
 });
+
+test('Android download is public, truthful, and only redirects to configured HTTPS releases', async () => {
+  for (const apkUrl of [
+    undefined,
+    'javascript:alert(1)',
+    'http://example.com/app.apk',
+    'https://example.com/pondo.apk',
+  ]) {
+    const server = createApp({ apkUrl }).listen(0);
+    await new Promise<void>((resolve) => server.once('listening', resolve));
+    const { port } = server.address() as { port: number };
+    const base = `http://127.0.0.1:${port}`;
+    try {
+      assert.equal((await fetch(`${base}/api/health`)).status, 200);
+      const response = await fetch(`${base}/api/downloads/android`);
+      assert.equal(response.status, 200);
+      assert.equal(response.headers.get('cache-control'), 'no-store');
+      const available = apkUrl?.startsWith('https://') ?? false;
+      assert.deepEqual(await response.json(), { available, url: available ? apkUrl : null });
+      const file = await fetch(`${base}/api/downloads/android/file`, { redirect: 'manual' });
+      assert.equal(file.status, available ? 302 : 404);
+      if (available) assert.equal(file.headers.get('location'), apkUrl);
+    } finally {
+      await new Promise<void>((resolve) => server.close(() => resolve()));
+    }
+  }
+});
