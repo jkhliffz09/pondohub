@@ -98,6 +98,52 @@ test('migration enforces ledger integrity, isolation, invitation ownership and p
       /invalid/,
     );
   });
+  await t.test('only selected goals are shared and students control selections', async () => {
+    const snapshot = async () =>
+      (await db.query<{ result: any }>('select public.guardian_snapshots() as result')).rows[0]
+        .result[0];
+    assert.deepEqual((await snapshot()).goals, []);
+    await asUser(student);
+    const privateGoal = (
+      await db.query<{ id: string }>(
+        "insert into public.goals(name,target_cents,target_date) values('Private goal',10000,current_date) returning id",
+      )
+    ).rows[0].id;
+    await db.query('update public.parent_links set shared_goal_ids=$1 where id=$2', [[goal], link]);
+    await asUser(parent);
+    assert.deepEqual(
+      (await snapshot()).goals.map((g: any) => g.id),
+      [goal],
+    );
+    assert.equal(
+      (
+        await db.query('update public.parent_links set shared_goal_ids=$1 returning id', [
+          [privateGoal],
+        ])
+      ).rows.length,
+      0,
+    );
+    await asUser(other);
+    const foreignGoal = (
+      await db.query<{ id: string }>(
+        "insert into public.goals(name,target_cents,target_date) values('Other goal',10000,current_date) returning id",
+      )
+    ).rows[0].id;
+    await asUser(student);
+    await assert.rejects(
+      db.query('update public.parent_links set shared_goal_ids=$1 where id=$2', [
+        [foreignGoal],
+        link,
+      ]),
+      /Only your own/,
+    );
+    await db.query("update public.parent_links set shared_goal_ids='{}' where id=$1", [link]);
+    await asUser(parent);
+    assert.deepEqual((await snapshot()).goals, []);
+    await asUser(student);
+    await db.query('update public.parent_links set shared_goal_ids=$1 where id=$2', [[goal], link]);
+    await asUser(parent);
+  });
   await t.test('guardians see authorized aggregates but never raw private rows', async () => {
     const snapshot = (
       await db.query<{ result: any }>('select public.guardian_snapshots() as result')

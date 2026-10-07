@@ -72,6 +72,7 @@ const goalSchema = z
 const permissions = z
   .object({
     share_goals: z.boolean(),
+    shared_goal_ids: z.array(z.uuid()).max(1000).optional(),
   })
   .strict();
 function unwrap<T>(result: { data: T; error: { message: string; code?: string } | null }): T {

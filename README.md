@@ -170,3 +170,9 @@ Before deploying this update to production, apply `supabase/migrations/202610071
 - History and dashboard recent activity both sort by transaction date descending, then recorded timestamp descending (with timezone offsets normalized), then ID for stable ties.
 
 Verified locally with 20 tests, including the full migration in PostgreSQL/PGlite, plus TypeScript and Expo web/iOS/Android bundle exports. Demo UI verification: a ₱200 withdrawal from ₱300 savings left ₱100; deleting that goal returned the remaining ₱100 and raised available pondo from ₱1,250 to ₱1,550. This is not a physical-device test or verification of the hosted migration.
+
+### Selected goals for guardian sharing
+
+Apply `supabase/migrations/20261007183439_selected_guardian_goals.sql` after the earlier migrations before deploying this update. Each guardian connection now stores its own goal selection. Existing visible goals are preserved during migration; new goals and new guardian connections start with no automatically shared goals. The master savings switch temporarily hides all selected goals without clearing the selection. Deleted goals are excluded. Balance, category totals, and budget health remain shared.
+
+Verified locally with 21 tests, including selection removal, ownership enforcement, and guardian update denial. Hosted migration requires access to the owning Supabase project; the connected management account currently lacks permission.

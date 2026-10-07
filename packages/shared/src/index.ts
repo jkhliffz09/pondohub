@@ -91,6 +91,7 @@ export interface Goal {
   deleted_at?: string | null;
 }
 export interface Permissions {
+  shared_goal_ids?: string[];
   share_balance: boolean;
   share_categories: boolean;
   share_goals: boolean;

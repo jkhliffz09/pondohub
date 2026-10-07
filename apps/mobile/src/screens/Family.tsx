@@ -2,11 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { View, Switch, Share, Pressable, AppState } from 'react-native';
 import * as Clipboard from 'expo-clipboard';
 import {
-  type Permissions,
   type GuardianSnapshot,
   peso,
   categories,
-  defaultPermissions,
 } from '@pondo/shared';
 import { useStore } from '../lib/store';
 import {
@@ -22,25 +20,16 @@ import {
   Empty,
   ErrorText,
   Progress,
-  type IconName,
 } from '../components/ui';
 import { GoalCard } from '../components/finance';
 import { c, font } from '../theme';
-const options: [keyof Permissions, string, string, IconName][] = [
-  [
-    'share_goals',
-    'Savings / goals (safe keeping)',
-    'Let your guardian see your active goals and saved balances.',
-    'flag-outline',
-  ],
-];
 export function Sharing({ navigation }: { navigation: any }) {
   const { data, updatePermissions, revokeLink } = useStore();
   const [error, setError] = useState<string | null>(null),
     [busy, setBusy] = useState(false),
     [confirm, setConfirm] = useState<string | null>(null);
   if (!data) return null;
-  async function toggle(id: string, key: keyof Permissions, value: boolean) {
+  async function toggle(id: string, value: boolean, selected?: string[]) {
     const link = data!.links.find((l) => l.id === id)!;
     setBusy(true);
     setError(null);
@@ -48,9 +37,12 @@ export function Sharing({ navigation }: { navigation: any }) {
       await updatePermissions(id, {
         share_balance: true,
         share_categories: true,
-        share_goals: link.share_goals,
+        share_goals: value,
+        shared_goal_ids:
+          selected ??
+          link.shared_goal_ids ??
+          data!.goals.filter((g) => !g.deleted_at).map((g) => g.id),
         share_health: true,
-        [key]: value,
       });
     } catch (e) {
       setError((e as Error).message);
@@ -101,33 +93,62 @@ export function Sharing({ navigation }: { navigation: any }) {
           </Card>
           <Section title="Savings visibility" />
           <Card>
-            {options.map(([key, title, description, icon], i) => (
-              <Row
-                key={key}
-                style={{
-                  alignItems: 'center',
-                  paddingTop: i ? 16 : 0,
-                  borderTopWidth: i ? 1 : 0,
-                  borderColor: c.line,
-                }}
-              >
-                <Icon name={icon} size={20} />
-                <View style={{ flex: 1, gap: 3 }}>
-                  <T style={{ fontFamily: font.semi, fontSize: 12 }}>{title}</T>
-                  <T muted style={{ fontSize: 10, lineHeight: 17 }}>
-                    {description}
-                  </T>
-                </View>
-                <Switch
-                  accessibilityLabel={`Share ${title.toLowerCase()}`}
-                  disabled={busy}
-                  value={link[key]}
-                  onValueChange={(value) => toggle(link.id, key, value)}
-                  trackColor={{ false: '#DCE3DF', true: '#2E9475' }}
-                  thumbColor="white"
-                />
-              </Row>
-            ))}
+            <Row>
+              <Icon name="flag-outline" size={20} />
+              <View style={{ flex: 1, gap: 3 }}>
+                <T style={{ fontFamily: font.semi, fontSize: 12 }}>
+                  Savings / goals (safe keeping)
+                </T>
+                <T muted style={{ fontSize: 10, lineHeight: 17 }}>
+                  Share only the goals you select below. New goals stay private.
+                </T>
+              </View>
+              <Switch
+                accessibilityLabel="Share savings goals"
+                disabled={busy}
+                value={link.share_goals}
+                onValueChange={(value) => toggle(link.id, value)}
+              />
+            </Row>
+            {link.share_goals &&
+              data.goals
+                .filter((g) => !g.deleted_at)
+                .map((goal) => {
+                  const selected =
+                    link.shared_goal_ids ??
+                    data.goals.filter((g) => !g.deleted_at).map((g) => g.id);
+                  const shared = selected.includes(goal.id);
+                  return (
+                    <Row
+                      key={goal.id}
+                      style={{ borderTopWidth: 1, borderColor: c.line, paddingTop: 12 }}
+                    >
+                      <View style={{ flex: 1 }}>
+                        <T style={{ fontFamily: font.semi, fontSize: 12 }}>{goal.name}</T>
+                        <T muted style={{ fontSize: 10 }}>
+                          {shared ? 'Shared with this guardian' : 'Private'}
+                        </T>
+                      </View>
+                      <Switch
+                        accessibilityLabel={`Share goal ${goal.name}`}
+                        disabled={busy}
+                        value={shared}
+                        onValueChange={(value) =>
+                          toggle(
+                            link.id,
+                            true,
+                            value
+                              ? [...selected, goal.id]
+                              : selected.filter((id) => id !== goal.id),
+                          )
+                        }
+                      />
+                    </Row>
+                  );
+                })}
+            {link.share_goals && !data.goals.some((g) => !g.deleted_at) && (
+              <T muted>No active goals yet.</T>
+            )}
           </Card>
           <T muted style={{ fontSize: 10, textAlign: 'center' }}>
             Changes are saved immediately.
@@ -437,7 +458,7 @@ function GuardianCard({ snapshot: g }: { snapshot: GuardianSnapshot }) {
             g.goals.map((goal) => <GoalCard key={goal.id} goal={goal} transactions={[]} />)
           ) : (
             <T muted style={{ fontSize: 12 }}>
-              Their next goal is still taking shape.
+              No savings goals are shared with you.
             </T>
           )}
         </>
@@ -476,7 +497,7 @@ export function Guardian({ navigation }: { navigation: any }) {
         <Row>
           <Icon name="shield-checkmark-outline" color={c.purple} />
           <T style={{ fontSize: 12, color: c.purple, flex: 1, lineHeight: 20 }}>
-            A space for support, never supervision. Students control their sharing permissions.
+            A space for support, never supervision. Students choose which savings goals to share.
           </T>
         </Row>
       </Card>

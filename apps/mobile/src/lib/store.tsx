@@ -149,7 +149,11 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
                 : null,
               goals: link.share_goals
                 ? data.goals
-                    .filter((g) => !g.deleted_at)
+                    .filter(
+                      (g) =>
+                        !g.deleted_at &&
+                        (link.shared_goal_ids ?? data.goals.map((goal) => goal.id)).includes(g.id),
+                    )
                     .map((g) => ({
                       ...g,
                       saved_cents: goalSaved(g, data.transactions),
@@ -190,6 +194,9 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     } catch {}
     next.links = next.links.map((l) => ({
       ...l,
+      shared_goal_ids:
+        l.shared_goal_ids ??
+        (l.share_goals ? next.goals.filter((g) => !g.deleted_at).map((g) => g.id) : []),
       share_balance: true,
       share_categories: true,
       share_health: true,
@@ -254,11 +261,21 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
       setData((d) => ({
         ...d!,
         links: d!.links.map((l) =>
-          l.id === id ? { ...l, ...defaultPermissions, share_goals: p.share_goals } : l,
+          l.id === id
+            ? {
+                ...l,
+                ...defaultPermissions,
+                share_goals: p.share_goals,
+                shared_goal_ids: p.shared_goal_ids,
+              }
+            : l,
         ),
       }));
     else {
-      await request(`/links/${id}`, 'PATCH', { share_goals: p.share_goals });
+      await request(`/links/${id}`, 'PATCH', {
+        share_goals: p.share_goals,
+        shared_goal_ids: p.shared_goal_ids,
+      });
       await refresh();
     }
   }
@@ -289,6 +306,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
             parent_id: 'demo-parent',
             created_at: new Date().toISOString(),
             ...defaultPermissions,
+            shared_goal_ids: [],
           },
         ],
       }));
