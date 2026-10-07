@@ -39,7 +39,7 @@ const preferences = z
 export const transactionSchema = z
   .object({
     id: z.uuid(),
-    kind: z.enum(['income', 'expense', 'savings']),
+    kind: z.enum(['income', 'expense', 'savings', 'withdrawal']),
     amount_cents: positive,
     category: z.enum(['food', 'transport', 'school', 'load', 'bills', 'personal', 'fun', 'other']),
     channel: z.enum(['Cash', 'GCash', 'Maya', 'Bank', 'Other']),
@@ -48,7 +48,10 @@ export const transactionSchema = z
     goal_id: z.uuid().nullable().default(null),
   })
   .strict()
-  .refine((v) => (v.kind === 'savings') === (v.goal_id !== null), 'Savings require a goal');
+  .refine(
+    (v) => ['savings', 'withdrawal'].includes(v.kind) === (v.goal_id !== null),
+    'Savings transfers require a goal',
+  );
 const goalSchema = z
   .object({
     name: z.string().trim().min(1).max(100),
@@ -68,10 +71,7 @@ const goalSchema = z
   .strict();
 const permissions = z
   .object({
-    share_balance: z.boolean(),
-    share_categories: z.boolean(),
     share_goals: z.boolean(),
-    share_health: z.boolean(),
   })
   .strict();
 function unwrap<T>(result: { data: T; error: { message: string; code?: string } | null }): T {
@@ -216,8 +216,9 @@ export function createApp(config: Config) {
             .from('transactions')
             .select('*')
             .eq('user_id', user.id)
+            .order('occurred_on', { ascending: false })
             .order('created_at', { ascending: false })
-            .order('id')
+            .order('id', { ascending: false })
             .range(offset, offset + 499),
         ) ?? [];
       transactions.push(...rows);
@@ -275,6 +276,11 @@ export function createApp(config: Config) {
           .single(),
       ),
     );
+  });
+  app.delete('/api/goals/:id', async (req, res) => {
+    const id = z.uuid().parse(req.params.id);
+    const { db } = ctx(res);
+    res.json(unwrap(await db.rpc('delete_goal', { p_goal: id })));
   });
   const inviteLimit = rateLimit({
     windowMs: 15 * 60000,

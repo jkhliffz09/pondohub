@@ -11,6 +11,8 @@ import {
   type GuardianSnapshot,
   type Role,
   makeDemo,
+  recordDemoTransaction,
+  deleteDemoGoal,
   summarize,
   goalSaved,
   categoryTotals,
@@ -34,6 +36,7 @@ interface Store {
   changeDemoRole: () => void;
   addTransaction: (t: NewTransaction) => Promise<void>;
   addGoal: (g: Omit<Goal, 'id' | 'user_id'>) => Promise<void>;
+  deleteGoal: (id: string) => Promise<void>;
   updateProfile: (p: Partial<Profile>) => Promise<void>;
   updatePermissions: (id: string, p: Permissions) => Promise<void>;
   revokeLink: (id: string) => Promise<void>;
@@ -145,10 +148,12 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
                   ).map((c) => ({ category: c.id, cents: c.cents }))
                 : null,
               goals: link.share_goals
-                ? data.goals.map((g) => ({
-                    ...g,
-                    saved_cents: goalSaved(g, data.transactions),
-                  }))
+                ? data.goals
+                    .filter((g) => !g.deleted_at)
+                    .map((g) => ({
+                      ...g,
+                      saved_cents: goalSaved(g, data.transactions),
+                    }))
                 : null,
               health: link.share_health ? (summary.health as GuardianSnapshot['health']) : null,
             },
@@ -183,6 +188,12 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
           next = parsed;
       }
     } catch {}
+    next.links = next.links.map((l) => ({
+      ...l,
+      share_balance: true,
+      share_categories: true,
+      share_health: true,
+    }));
     setDemo(true);
     setData(next);
     setLoading(false);
@@ -202,28 +213,21 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
   }
   async function addTransaction(t: NewTransaction) {
     if (demo) {
-      const d = state.current!;
-      if (d.transactions.some((x) => x.id === t.id)) return;
-      const available = summarize(d).available;
-      if (t.kind !== 'income' && t.amount_cents > available)
-        throw new Error('Not enough available pondo. Add cash-in first.');
-      if (t.kind === 'savings') {
-        const g = d.goals.find((g) => g.id === t.goal_id);
-        if (!g) throw new Error('Goal not found.');
-        if (goalSaved(g, d.transactions) + t.amount_cents > g.target_cents)
-          throw new Error('This exceeds your remaining goal target.');
-      }
-      const next = {
-        ...d,
-        transactions: [
-          { ...t, user_id: d.profile.id, created_at: new Date().toISOString() },
-          ...d.transactions,
-        ],
-      };
+      const next = recordDemoTransaction(state.current!, t);
       state.current = next;
       setData(next);
     } else {
       await request('/transactions', 'POST', t);
+      await refresh();
+    }
+  }
+  async function deleteGoal(id: string) {
+    if (demo) {
+      const next = deleteDemoGoal(state.current!, id, newId());
+      state.current = next;
+      setData(next);
+    } else {
+      await request(`/goals/${id}`, 'DELETE');
       await refresh();
     }
   }
@@ -249,10 +253,12 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
     if (demo)
       setData((d) => ({
         ...d!,
-        links: d!.links.map((l) => (l.id === id ? { ...l, ...p } : l)),
+        links: d!.links.map((l) =>
+          l.id === id ? { ...l, ...defaultPermissions, share_goals: p.share_goals } : l,
+        ),
       }));
     else {
-      await request(`/links/${id}`, 'PATCH', p);
+      await request(`/links/${id}`, 'PATCH', { share_goals: p.share_goals });
       await refresh();
     }
   }
@@ -318,6 +324,7 @@ export function StoreProvider({ children }: { children: React.ReactNode }) {
         changeDemoRole,
         addTransaction,
         addGoal,
+        deleteGoal,
         updateProfile,
         updatePermissions,
         revokeLink,

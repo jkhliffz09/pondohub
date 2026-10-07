@@ -1,5 +1,5 @@
 export type Role = 'student' | 'parent';
-export type Kind = 'income' | 'expense' | 'savings';
+export type Kind = 'income' | 'expense' | 'savings' | 'withdrawal';
 export const categories = [
   {
     id: 'food',
@@ -88,6 +88,7 @@ export interface Goal {
   target_date: string;
   icon: string;
   saved_cents?: number;
+  deleted_at?: string | null;
 }
 export interface Permissions {
   share_balance: boolean;
@@ -165,9 +166,7 @@ export function cycleDates(startDay = 1, today = manilaDate()) {
 export function goalSaved(goal: Goal, transactions: Transaction[]) {
   return (
     goal.saved_cents ??
-    transactions
-      .filter((t) => t.kind === 'savings' && t.goal_id === goal.id)
-      .reduce((s, t) => s + t.amount_cents, 0)
+    transactions.filter((t) => t.goal_id === goal.id).reduce((s, t) => s + savingsDelta(t), 0)
   );
 }
 export function summarize(
@@ -178,15 +177,16 @@ export function summarize(
   const all = data.transactions.filter((t) => t.occurred_on <= today);
   const income = all.filter((t) => t.kind === 'income').reduce((s, t) => s + t.amount_cents, 0);
   const spent = all.filter((t) => t.kind === 'expense').reduce((s, t) => s + t.amount_cents, 0);
-  const reserved = all.filter((t) => t.kind === 'savings').reduce((s, t) => s + t.amount_cents, 0);
+  const reserved = all.reduce((s, t) => s + savingsDelta(t), 0);
   const available = income - spent - reserved;
   const week = all.filter((t) => t.occurred_on >= start);
   const weekSpent = week
     .filter((t) => t.kind === 'expense')
     .reduce((s, t) => s + t.amount_cents, 0);
-  const weekReserved = week
-    .filter((t) => t.kind === 'savings')
-    .reduce((s, t) => s + t.amount_cents, 0);
+  const weekReserved = Math.max(
+    0,
+    week.reduce((s, t) => s + savingsDelta(t), 0),
+  );
   const budgetRemaining = data.profile.weekly_budget_cents - weekSpent - weekReserved;
   const safePool = Math.max(0, Math.min(available, budgetRemaining));
   const safeDaily = Math.floor(safePool / daysLeft);
@@ -352,5 +352,86 @@ export function makeDemo(): AppData {
       },
     ],
     links: [],
+  };
+}
+
+export function savingsDelta(t: Transaction) {
+  return t.kind === 'savings' ? t.amount_cents : t.kind === 'withdrawal' ? -t.amount_cents : 0;
+}
+export function isPondoIn(t: Pick<Transaction, 'kind'>) {
+  return t.kind === 'income' || t.kind === 'withdrawal';
+}
+export function newestFirst(a: Transaction, b: Transaction) {
+  return (
+    b.occurred_on.localeCompare(a.occurred_on) ||
+    Date.parse(b.created_at) - Date.parse(a.created_at) ||
+    b.id.localeCompare(a.id)
+  );
+}
+// Shared by demo mutations and tests; withdrawals are transfers, never new income.
+export function recordDemoTransaction(
+  data: AppData,
+  t: Omit<Transaction, 'user_id' | 'created_at'>,
+  now = new Date().toISOString(),
+): AppData {
+  if (data.profile.role !== 'student') throw new Error('Student account required.');
+  const existing = data.transactions.find((x) => x.id === t.id);
+  if (existing) {
+    if (Object.entries(t).some(([key, value]) => existing[key as keyof Transaction] !== value))
+      throw new Error('Transaction ID already used.');
+    return data;
+  }
+  if (!Number.isSafeInteger(t.amount_cents) || t.amount_cents < 1 || t.amount_cents > 100000000)
+    throw new Error('Invalid amount.');
+  if (t.kind === 'expense' || t.kind === 'savings') {
+    if (t.amount_cents > summarize(data).available) throw new Error('Not enough available pondo.');
+  }
+  if (t.kind === 'savings' || t.kind === 'withdrawal') {
+    const goal = data.goals.find(
+      (g) => g.id === t.goal_id && !g.deleted_at && g.user_id === data.profile.id,
+    );
+    if (!goal) throw new Error('Goal not found or deleted.');
+    const saved = goalSaved(goal, data.transactions);
+    if (t.kind === 'savings' && saved + t.amount_cents > goal.target_cents)
+      throw new Error('Contribution exceeds the remaining goal target.');
+    if (t.kind === 'withdrawal' && t.amount_cents > saved)
+      throw new Error('Not enough savings in this goal.');
+  }
+  return {
+    ...data,
+    transactions: [{ ...t, user_id: data.profile.id, created_at: now }, ...data.transactions],
+  };
+}
+export function deleteDemoGoal(
+  data: AppData,
+  goalId: string,
+  transactionId: string,
+  now = new Date().toISOString(),
+): AppData {
+  if (data.profile.role !== 'student') throw new Error('Student account required.');
+  const goal = data.goals.find((g) => g.id === goalId && g.user_id === data.profile.id);
+  if (!goal) throw new Error('Goal not found.');
+  if (goal.deleted_at) return data;
+  const saved = goalSaved(goal, data.transactions);
+  const next =
+    saved > 0
+      ? recordDemoTransaction(
+          data,
+          {
+            id: transactionId,
+            kind: 'withdrawal',
+            amount_cents: saved,
+            category: 'other',
+            channel: 'Cash',
+            description: `Returned savings: ${goal.name} (goal deleted)`,
+            occurred_on: manilaDate(new Date(now)),
+            goal_id: goalId,
+          },
+          now,
+        )
+      : data;
+  return {
+    ...next,
+    goals: next.goals.map((g) => (g.id === goalId ? { ...g, deleted_at: now } : g)),
   };
 }

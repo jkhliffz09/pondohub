@@ -49,9 +49,9 @@ Examples are included in each app's `.env.example`. For native development, a co
 - Student dashboard with real balance, reserved savings, remaining weekly plan, and safe daily spending.
 - Cash-in and expense recording with category, payment channel, date, validation, and success states.
 - “Can I afford this?” comparison against remaining funds and daily essentials; create a savings goal from an item.
-- Savings goals, deadlines, contribution tracking, and target progress.
+- Clickable savings goals, full activity history, contributions, partial/full withdrawals, and deletion that returns remaining savings to pondo while archiving goal activities.
 - Searchable and filterable transaction history, transaction details, spending charts, and native sharing of a text summary.
-- One-time guardian pairing codes, native code sharing, per-guardian permissions, and access revocation.
+- One-time guardian pairing codes, native code sharing, optional savings visibility, and access revocation.
 - Read-only parent dashboard and current in-app budget/goal updates. Alerts are derived from shared records; they are not push notifications or scheduled messages.
 - Personal details, weekly budget, daily essentials, and configurable budget start day.
 
@@ -71,12 +71,12 @@ stitch/            Original exported HTML and PNG references
 ## Money and privacy rules
 
 - All stored amounts are integer **centavos**. Calendar calculations use **Asia/Manila**.
-- Available pondo = all recorded cash-in − expenses − savings contributions. Starting a new week never creates money.
-- Safe daily spend = max(0, min(available pondo, weekly budget − this week's expenses − this week's savings)) ÷ days remaining, rounded down to a centavo. Today is included in the remaining days.
+- Available pondo = all recorded cash-in − expenses − savings contributions + savings withdrawals. Starting a new week never creates money.
+- Safe daily spend = max(0, min(available pondo, weekly budget − this week's expenses − max(0, this week's contributions − withdrawals))) ÷ days remaining, rounded down to a centavo. Today is included in the remaining days.
 - Every API request verifies the Supabase access token with `auth.getUser()`. Database calls carry that user's JWT; the API never uses a service-role bypass.
 - RLS protects every public table. Privileged database functions live in `private`, check `auth.uid()`, fix `search_path`, and have explicit execution grants. Public RPCs are invoker wrappers.
 - Ledger writes lock the student's profile row to serialize balance checks. Client-generated transaction IDs make matching retries idempotent. Direct ledger writes are not granted to authenticated clients.
-- Guardian permissions are enforced in database summary functions. Guardians cannot read raw transaction or goal rows, even by bypassing the Express API. Detailed receipts and notes are never included. Revocation applies on the next request; the active parent dashboard refreshes every 30 seconds and on app foregrounding.
+- Guardian visibility is enforced in database summary functions. Balance, category totals, and budget rhythm are always shared for connected guardians; only savings/goals can be hidden. Guardians cannot read raw transaction or goal rows, even by bypassing the Express API. Detailed receipts and notes are never included. Revocation applies on the next request; the active parent dashboard refreshes every 30 seconds and on app foregrounding.
 - Invitation codes contain 64 random bits, are hashed before storage, expire after 24 hours, and can be accepted once. The Express pairing routes are rate limited.
 
 ## Verification
@@ -156,3 +156,17 @@ The APK build was deferred at the user's request. The home page does not adverti
 5. Set `ANDROID_APK_URL` in Vercel to the actual APK asset URL and redeploy. The Download Android APK button becomes enabled automatically. Keep the APK outside Git and outside Vercel Functions.
 
 The download API also exposes `/api/downloads/android/file`, which redirects to the configured release. An unset or invalid URL returns a clear 404 instead of a broken download.
+
+
+## Savings activity update — October 8, 2026
+
+Before deploying this update to production, apply `supabase/migrations/20261007174314_goal_withdrawals_and_guardian_visibility.sql` once in the project's SQL Editor (after the initial schema). The complete migration is transactional. No hosted database changes were applied from this workspace during implementation.
+
+- Open a goal to see all its contributions and withdrawals, newest transaction date first, with actual recorded timestamps used to break ties.
+- Take out any amount up to the goal's current saved balance. It returns to available pondo without being counted as new income or spending.
+- Delete a goal to return its remaining balance atomically, mark it deleted, and preserve its activity. Deleted goals are accessible through **View deleted goals** and linked History entries. They cannot receive further transfers.
+- All savings writes and deletion lock the student's profile row. Matching transaction retries and repeated deletion cannot duplicate returns.
+- Existing guardian links are migrated to always share balance, spending categories, and budget health. Only savings/goals visibility remains configurable. Unlinking remains available; raw individual transaction details remain private.
+- History and dashboard recent activity both sort by transaction date descending, then recorded timestamp descending (with timezone offsets normalized), then ID for stable ties.
+
+Verified locally with 20 tests, including the full migration in PostgreSQL/PGlite, plus TypeScript and Expo web/iOS/Android bundle exports. Demo UI verification: a ₱200 withdrawal from ₱300 savings left ₱100; deleting that goal returned the remaining ₱100 and raised available pondo from ₱1,250 to ₱1,550. This is not a physical-device test or verification of the hosted migration.

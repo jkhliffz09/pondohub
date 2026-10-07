@@ -114,7 +114,7 @@ export function Profile({ navigation }: { navigation: any }) {
                 {
                   icon: 'shield-checkmark-outline',
                   title: 'Family & privacy',
-                  sub: 'Share on your terms',
+                  sub: 'Manage guardian access',
                   route: 'Sharing',
                 },
               ]),

@@ -28,24 +28,11 @@ import { GoalCard } from '../components/finance';
 import { c, font } from '../theme';
 const options: [keyof Permissions, string, string, IconName][] = [
   [
-    'share_balance',
-    'Available pondo',
-    'Your spendable balance and safe daily pace.',
-    'wallet-outline',
-  ],
-  [
-    'share_categories',
-    'Category totals',
-    'The bigger picture, without individual purchases.',
-    'pie-chart-outline',
-  ],
-  [
     'share_goals',
-    'Savings milestones',
-    'Your dreams and the progress you’re making.',
+    'Savings / goals (safe keeping)',
+    'Let your guardian see your active goals and saved balances.',
     'flag-outline',
   ],
-  ['share_health', 'Budget rhythm', 'A gentle overview of how your week is going.', 'leaf-outline'],
 ];
 export function Sharing({ navigation }: { navigation: any }) {
   const { data, updatePermissions, revokeLink } = useStore();
@@ -59,10 +46,10 @@ export function Sharing({ navigation }: { navigation: any }) {
     setError(null);
     try {
       await updatePermissions(id, {
-        share_balance: link.share_balance,
-        share_categories: link.share_categories,
+        share_balance: true,
+        share_categories: true,
         share_goals: link.share_goals,
-        share_health: link.share_health,
+        share_health: true,
         [key]: value,
       });
     } catch (e) {
@@ -72,19 +59,16 @@ export function Sharing({ navigation }: { navigation: any }) {
     }
   }
   return (
-    <Page
-      title="Sharing, on your terms."
-      subtitle="A little reassurance. Your independence intact."
-      back
-    >
+    <Page title="Guardian sharing" subtitle="A clear picture, with support from your family." back>
       <Card style={{ backgroundColor: c.mint, borderWidth: 0 }}>
         <Row>
           <Icon name="shield-checkmark-outline" size={27} />
-          <T style={{ fontFamily: font.bold, fontSize: 15 }}>Your story. Your say.</T>
+          <T style={{ fontFamily: font.bold, fontSize: 15 }}>A shared view of your pondo.</T>
         </Row>
         <T style={{ fontSize: 12, lineHeight: 21, color: '#55816D' }}>
-          Choose what your parent or guardian can see. They can never edit your records, move money,
-          or pause your pondo.
+          Connected guardians always see your available balance, spending category totals, and
+          budget rhythm. Only savings and goals are optional. Guardians cannot edit records or move
+          money.
         </T>
       </Card>
       {data.links.map((link) => (
@@ -115,7 +99,7 @@ export function Sharing({ navigation }: { navigation: any }) {
               <Badge label="Read-only" />
             </Row>
           </Card>
-          <Section title="What you’re comfortable sharing" />
+          <Section title="Savings visibility" />
           <Card>
             {options.map(([key, title, description, icon], i) => (
               <Row
@@ -178,7 +162,7 @@ export function Sharing({ navigation }: { navigation: any }) {
         <Empty
           icon="people-outline"
           title="Your circle of support."
-          description="Invite someone who cheers for your little wins. You choose what they see."
+          description="Invite a guardian to see your balance, spending totals, and budget rhythm. Savings visibility is optional."
         />
       )}
       <Card style={{ backgroundColor: c.lavender, borderWidth: 0 }}>
@@ -249,8 +233,8 @@ export function Invitation() {
           Better with someone{'\n'}in your corner.
         </T>
         <T muted style={{ textAlign: 'center', fontSize: 12, lineHeight: 22 }}>
-          Invite a parent, guardian, or sponsor to celebrate your progress, without giving up your
-          privacy.
+          Invite a parent, guardian, or sponsor to see your balance, spending totals, and budget
+          rhythm. Only savings visibility is optional.
         </T>
       </View>
       {invite ? (
@@ -314,7 +298,10 @@ export function Invitation() {
         {[
           ['1', 'Ask your guardian to create a parent account.'],
           ['2', 'They tap “Connect a student” on their home screen.'],
-          ['3', 'They enter your code. You can change or revoke their access anytime.'],
+          [
+            '3',
+            'They enter your code to see budget summaries. You can change savings visibility or disconnect.',
+          ],
         ].map(([num, text]) => (
           <Row key={num} style={{ alignItems: 'flex-start' }}>
             <View
@@ -480,7 +467,7 @@ export function Guardian({ navigation }: { navigation: any }) {
         <Empty
           icon="people-outline"
           title="Your circle starts here."
-          description="Ask your student for a pairing code to see the updates they choose to share."
+          description="Ask your student for a pairing code to see their balance, spending totals, and budget rhythm."
           action="Connect a student"
           onPress={() => navigation.navigate('Pair')}
         />
@@ -615,7 +602,7 @@ export function Alerts() {
           ) : (
             <Empty
               title="Your updates will grow here."
-              description="Connect with your student to see the milestones they choose to share."
+              description="Connect with your student to see their budget updates and shared savings milestones."
             />
           )}
         </>

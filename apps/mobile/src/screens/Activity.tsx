@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { View, Share } from 'react-native';
-import { peso, categoryTotals, cycleDates, manilaDate, categories } from '@pondo/shared';
+import {
+  peso,
+  categoryTotals,
+  cycleDates,
+  manilaDate,
+  categories,
+  newestFirst,
+  isPondoIn,
+} from '@pondo/shared';
 import { useStore } from '../lib/store';
 import {
   Page,
@@ -25,18 +33,20 @@ export function History({ navigation }: { navigation: any }) {
   const list = data.transactions
     .filter(
       (t) =>
-        (filter === 'all' || t.kind === filter) &&
+        (filter === 'all' ||
+          t.kind === filter ||
+          (filter === 'savings' && t.kind === 'withdrawal')) &&
         `${t.description} ${t.channel} ${t.category}`.toLowerCase().includes(search.toLowerCase()),
     )
-    .sort(
-      (a, b) =>
-        b.occurred_on.localeCompare(a.occurred_on) || b.created_at.localeCompare(a.created_at),
-    );
-  const income = list.filter((t) => t.kind === 'income').reduce((s, t) => s + t.amount_cents, 0),
-    out = list.filter((t) => t.kind !== 'income').reduce((s, t) => s + t.amount_cents, 0);
+    .sort(newestFirst);
+  const income = list.filter(isPondoIn).reduce((s, t) => s + t.amount_cents, 0),
+    out = list.filter((t) => !isPondoIn(t)).reduce((s, t) => s + t.amount_cents, 0);
   const dates = [...new Set(list.map((t) => t.occurred_on))];
   return (
     <Page title="Your money story." subtitle="Every little in and out, all in one place." refresh>
+      <T muted style={{ fontSize: 11 }}>
+        Newest first · transaction date, then time recorded
+      </T>
       <Field
         accessibilityLabel="Search transactions"
         placeholder="Search your transactions…"
@@ -138,7 +148,7 @@ export function History({ navigation }: { navigation: any }) {
     </Page>
   );
 }
-export function TransactionDetail({ route }: { route: any }) {
+export function TransactionDetail({ route, navigation }: { route: any; navigation: any }) {
   const { data } = useStore();
   const t = data?.transactions.find((t) => t.id === route.params.id);
   return (
@@ -158,7 +168,7 @@ export function TransactionDetail({ route }: { route: any }) {
               color={t.kind === 'income' ? c.green : c.purple}
             />
             <T style={{ fontFamily: font.extra, fontSize: 37, lineHeight: 48 }}>
-              {t.kind === 'income' ? '+' : '−'}
+              {isPondoIn(t) ? '+' : '−'}
               {peso(t.amount_cents, true)}
             </T>
             <T style={{ fontFamily: font.semi, textAlign: 'center' }}>{t.description}</T>
@@ -171,7 +181,9 @@ export function TransactionDetail({ route }: { route: any }) {
                   ? 'Cash in'
                   : t.kind === 'expense'
                     ? 'Expense'
-                    : 'Savings contribution',
+                    : t.kind === 'withdrawal'
+                      ? 'Savings withdrawal'
+                      : 'Savings contribution',
               ],
               ['Category', categories.find((c) => c.id === t.category)?.name || 'Other'],
               ['Channel', t.channel],
@@ -191,6 +203,13 @@ export function TransactionDetail({ route }: { route: any }) {
               </Row>
             ))}
           </Card>
+          {t.goal_id && (
+            <Button
+              label="View goal activities"
+              variant="secondary"
+              onPress={() => navigation.navigate('GoalDetail', { id: t.goal_id })}
+            />
+          )}
           <Row style={{ justifyContent: 'center' }}>
             <Icon name="lock-closed-outline" size={13} color={c.muted} />
             <T muted style={{ fontSize: 10 }}>

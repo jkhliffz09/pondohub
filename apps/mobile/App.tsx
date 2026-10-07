@@ -23,7 +23,7 @@ import { Splash, AuthScreen } from './src/screens/Auth';
 import { Landing } from './src/screens/Landing';
 import { Home } from './src/screens/Home';
 import { MoneyForm, Afford } from './src/screens/Money';
-import { Savings, CreateGoal, Contribute } from './src/screens/Savings';
+import { Savings, CreateGoal, Contribute, GoalDetail, Withdraw } from './src/screens/Savings';
 import { History, Insights, TransactionDetail } from './src/screens/Activity';
 import { Sharing, Invitation, Guardian, Pair, Alerts } from './src/screens/Family';
 import { Profile, Settings } from './src/screens/Profile';
@@ -170,6 +170,8 @@ function Navigation() {
             <Stack.Screen name="Afford" component={Afford} />
             <Stack.Screen name="CreateGoal" component={CreateGoal} />
             <Stack.Screen name="Contribute" component={Contribute} />
+            <Stack.Screen name="GoalDetail" component={GoalDetail} />
+            <Stack.Screen name="Withdraw" component={Withdraw} />
             <Stack.Screen name="Transaction" component={TransactionDetail} />
             <Stack.Screen name="Sharing" component={Sharing} />
             <Stack.Screen name="Invitation" component={Invitation} />

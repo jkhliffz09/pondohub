@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { View, Pressable } from 'react-native';
-import { peso, goalSaved, toCents, manilaDate, summarize } from '@pondo/shared';
+import { peso, goalSaved, toCents, manilaDate, summarize, newestFirst } from '@pondo/shared';
 import { useStore, newId } from '../lib/store';
 import {
   Page,
@@ -15,12 +15,14 @@ import {
   ErrorText,
   type IconName,
 } from '../components/ui';
-import { GoalCard } from '../components/finance';
+import { GoalCard, TransactionRow } from '../components/finance';
 import { c, font } from '../theme';
 export function Savings({ navigation }: { navigation: any }) {
   const { data } = useStore();
+  const [showDeleted, setShowDeleted] = useState(false);
   if (!data) return null;
-  const total = data.goals.reduce((s, g) => s + goalSaved(g, data.transactions), 0);
+  const activeGoals = data.goals.filter((g) => !g.deleted_at);
+  const total = activeGoals.reduce((s, g) => s + goalSaved(g, data.transactions), 0);
   return (
     <Page
       title="Little steps. Big dreams."
@@ -67,19 +69,19 @@ export function Savings({ navigation }: { navigation: any }) {
         </Row>
       </Card>
       <Section
-        title={`Your goals (${data.goals.length})`}
+        title={`Your goals (${activeGoals.length})`}
         action="New goal"
         onPress={() => navigation.navigate('CreateGoal')}
       />
-      {data.goals.map((g) => (
+      {activeGoals.map((g) => (
         <GoalCard
           key={g.id}
           goal={g}
           transactions={data.transactions}
-          onAdd={() => navigation.navigate('Contribute', { id: g.id })}
+          onPress={() => navigation.navigate('GoalDetail', { id: g.id })}
         />
       ))}
-      {!data.goals.length && (
+      {!activeGoals.length && (
         <Card>
           <T muted>A laptop, concert tickets, or a rainy-day buffer. What are you saving for?</T>
         </Card>
@@ -89,6 +91,26 @@ export function Savings({ navigation }: { navigation: any }) {
         icon="add-circle-outline"
         onPress={() => navigation.navigate('CreateGoal')}
       />
+      {data.goals.some((g) => g.deleted_at) && (
+        <>
+          <Button
+            label={showDeleted ? 'Hide deleted goals' : 'View deleted goals'}
+            variant="ghost"
+            onPress={() => setShowDeleted(!showDeleted)}
+          />
+          {showDeleted &&
+            data.goals
+              .filter((g) => g.deleted_at)
+              .map((g) => (
+                <Button
+                  key={g.id}
+                  label={`${g.name} · deleted`}
+                  variant="secondary"
+                  onPress={() => navigation.navigate('GoalDetail', { id: g.id })}
+                />
+              ))}
+        </>
+      )}
       <Row style={{ alignItems: 'flex-start', padding: 5 }}>
         <Icon name="bulb-outline" color={c.amber} size={18} />
         <T muted style={{ fontSize: 11, flex: 1, lineHeight: 19 }}>
@@ -239,7 +261,7 @@ export function Contribute({ route, navigation }: { route: any; navigation: any 
     [busy, setBusy] = useState(false),
     [error, setError] = useState<string | null>(null);
   const id = useRef(newId());
-  const goal = data?.goals.find((g) => g.id === route.params.id);
+  const goal = data?.goals.find((g) => g.id === route.params.id && !g.deleted_at);
   if (!data || !goal)
     return (
       <Page title="Add to goal" back>
@@ -294,6 +316,190 @@ export function Contribute({ route, navigation }: { route: any; navigation: any 
       </Card>
       <ErrorText message={error} />
       <Button label="Set this money aside" loading={busy} onPress={save} icon="checkmark" />
+    </Page>
+  );
+}
+
+export function GoalDetail({ route, navigation }: { route: any; navigation: any }) {
+  const { data, deleteGoal } = useStore();
+  const [confirm, setConfirm] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const goal = data?.goals.find((g) => g.id === route.params.id);
+  if (!data || !goal)
+    return (
+      <Page title="Goal activities" back>
+        <T>This goal could not be found.</T>
+      </Page>
+    );
+  const saved = goalSaved(goal, data.transactions);
+  const activities = data.transactions.filter((t) => t.goal_id === goal.id).sort(newestFirst);
+  return (
+    <Page
+      title={goal.name}
+      subtitle="Every contribution and return to pondo, in one place."
+      back
+      refresh
+    >
+      <GoalCard goal={goal} transactions={data.transactions} />
+      {goal.deleted_at ? (
+        <Card>
+          <Badge label="Deleted goal · activity preserved" tone="purple" />
+          <T>
+            Deleted {new Date(goal.deleted_at).toLocaleDateString('en-PH')}. Its remaining savings
+            were returned to available pondo.
+          </T>
+        </Card>
+      ) : (
+        <>
+          <Button
+            label="Add savings"
+            disabled={saved >= goal.target_cents || busy}
+            icon="add"
+            onPress={() => navigation.navigate('Contribute', { id: goal.id })}
+          />
+          <Button
+            label="Take out savings"
+            disabled={saved <= 0 || busy}
+            variant="secondary"
+            icon="arrow-undo-outline"
+            onPress={() => navigation.navigate('Withdraw', { id: goal.id })}
+          />
+          {confirm ? (
+            <Card>
+              <T style={{ fontFamily: font.bold }}>Delete {goal.name}?</T>
+              <T>
+                {peso(saved, true)} will return to your available pondo. This goal will leave your
+                active list. Its activities will stay in History.
+              </T>
+              <Button
+                label="Delete goal and return savings"
+                variant="danger"
+                loading={busy}
+                onPress={async () => {
+                  if (busy) return;
+                  setBusy(true);
+                  setError(null);
+                  try {
+                    await deleteGoal(goal.id);
+                    setConfirm(false);
+                  } catch (e) {
+                    setError((e as Error).message);
+                  } finally {
+                    setBusy(false);
+                  }
+                }}
+              />
+              <Button
+                label="Keep this goal"
+                variant="ghost"
+                disabled={busy}
+                onPress={() => setConfirm(false)}
+              />
+            </Card>
+          ) : (
+            <Button label="Delete goal" variant="danger" onPress={() => setConfirm(true)} />
+          )}
+        </>
+      )}
+      <ErrorText message={error} />
+      <Section title={`Activities (${activities.length})`} />
+      <T muted style={{ fontSize: 11 }}>
+        Newest first · transaction date, then time recorded
+      </T>
+      {!activities.length && (
+        <Card>
+          <T muted>No savings movements yet.</T>
+        </Card>
+      )}
+      {activities.map((t) => (
+        <Card key={t.id} style={{ gap: 2, paddingVertical: 8 }}>
+          <T muted style={{ fontSize: 11 }}>
+            {t.occurred_on} ·{' '}
+            {new Date(t.created_at).toLocaleTimeString('en-PH', {
+              timeZone: 'Asia/Manila',
+              hour: '2-digit',
+              minute: '2-digit',
+            })}
+          </T>
+          <TransactionRow
+            transaction={t}
+            onPress={() => navigation.navigate('Transaction', { id: t.id })}
+          />
+        </Card>
+      ))}
+    </Page>
+  );
+}
+
+export function Withdraw({ route, navigation }: { route: any; navigation: any }) {
+  const { data, addTransaction } = useStore();
+  const [amount, setAmount] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const id = useRef(newId());
+  const goal = data?.goals.find((g) => g.id === route.params.id && !g.deleted_at);
+  if (!data || !goal)
+    return (
+      <Page title="Take out savings" back>
+        <T>This goal is unavailable.</T>
+      </Page>
+    );
+  const saved = goalSaved(goal, data.transactions);
+  return (
+    <Page title="Take out savings" subtitle="Move saved money back to your everyday pondo." back>
+      <GoalCard goal={goal} transactions={data.transactions} />
+      <T>
+        You can take out up to {peso(saved, true)}. This reduces your goal progress and increases
+        your available pondo by the same amount.
+      </T>
+      <Field
+        label="Amount to take out (₱)"
+        placeholder="200"
+        keyboardType="decimal-pad"
+        value={amount}
+        onChangeText={setAmount}
+      />
+      <Button
+        label="Use full saved balance"
+        variant="ghost"
+        disabled={busy || saved <= 0}
+        onPress={() => setAmount((saved / 100).toFixed(2))}
+      />
+      <ErrorText message={error} />
+      <Button
+        label="Return to pondo"
+        icon="arrow-undo-outline"
+        disabled={saved <= 0}
+        loading={busy}
+        onPress={async () => {
+          if (busy) return;
+          setError(null);
+          try {
+            const cents = toCents(amount);
+            if (cents > saved) throw new Error('This is more than the savings in this goal.');
+            setBusy(true);
+            await addTransaction({
+              id: id.current,
+              kind: 'withdrawal',
+              amount_cents: cents,
+              category: 'other',
+              channel: 'Cash',
+              description: `Taken out from ${goal.name}`,
+              occurred_on: manilaDate(),
+              goal_id: goal.id,
+            });
+            navigation.goBack();
+          } catch (e) {
+            setError((e as Error).message);
+          } finally {
+            setBusy(false);
+          }
+        }}
+      />
+      <T muted style={{ fontSize: 11 }}>
+        This updates your recorded balances. It does not transfer money between bank accounts.
+      </T>
     </Page>
   );
 }

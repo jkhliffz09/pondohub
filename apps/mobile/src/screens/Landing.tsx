@@ -29,8 +29,8 @@ const features: { icon: IconName; title: string; body: string; color: string }[]
   },
   {
     icon: 'people-outline',
-    title: 'A little support, on your terms.',
-    body: 'Invite a parent or guardian and choose which money summaries you share.',
+    title: 'A clearer picture, together.',
+    body: 'Invite a guardian to see your balance, spending totals, and budget rhythm. Keep savings visibility optional.',
     color: c.amberTint,
   },
 ];

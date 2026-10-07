@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { summarize, peso } from '@pondo/shared';
+import { summarize, peso, newestFirst } from '@pondo/shared';
 import { useStore } from '../lib/store';
 import { c, font } from '../theme';
 import { Page, T, Row, Icon, Card, Badge, Section, type IconName } from '../components/ui';
@@ -217,6 +217,8 @@ export function Home() {
       <Card style={{ paddingVertical: 3, gap: 0 }}>
         {data.transactions.length ? (
           data.transactions
+            .slice()
+            .sort(newestFirst)
             .slice(0, 3)
             .map((t) => (
               <TransactionRow
@@ -236,8 +238,8 @@ export function Home() {
           <Icon name="shield-checkmark-outline" color={c.muted} size={13} />
           <T muted style={{ fontSize: 10 }}>
             {data.links.length
-              ? 'Sharing on your terms. Manage family access.'
-              : 'Your money story is private. Share on your terms.'}
+              ? 'Guardian sharing. Manage savings visibility.'
+              : 'Connect a guardian for budget support.'}
           </T>
         </Row>
       </Pressable>

@@ -141,8 +141,17 @@ export function TransactionRow({
 }) {
   const cat = categories.find((c) => c.id === t.category) || categories[7];
   const icon =
-    t.kind === 'income' ? 'arrow-down-outline' : t.kind === 'savings' ? 'flag-outline' : cat.icon;
-  const color = t.kind === 'income' ? c.green : t.kind === 'savings' ? c.purple : cat.color;
+    t.kind === 'income' || t.kind === 'withdrawal'
+      ? 'arrow-down-outline'
+      : t.kind === 'savings'
+        ? 'flag-outline'
+        : cat.icon;
+  const color =
+    t.kind === 'income' || t.kind === 'withdrawal'
+      ? c.green
+      : t.kind === 'savings'
+        ? c.purple
+        : cat.color;
   return (
     <Pressable
       accessibilityRole={onPress ? 'button' : undefined}
@@ -160,7 +169,11 @@ export function TransactionRow({
           height: 41,
           borderRadius: 13,
           backgroundColor:
-            t.kind === 'income' ? c.mint : t.kind === 'savings' ? c.lavender : cat.tint,
+            t.kind === 'income' || t.kind === 'withdrawal'
+              ? c.mint
+              : t.kind === 'savings'
+                ? c.lavender
+                : cat.tint,
           alignItems: 'center',
           justifyContent: 'center',
         }}
@@ -171,17 +184,23 @@ export function TransactionRow({
         <T style={{ fontFamily: font.semi, fontSize: 12 }}>{t.description}</T>
         <T muted style={{ fontSize: 10, lineHeight: 16 }}>
           {t.channel} ·{' '}
-          {t.kind === 'income' ? 'Cash in' : t.kind === 'savings' ? 'Savings' : cat.name}
+          {t.kind === 'income'
+            ? 'Cash in'
+            : t.kind === 'savings'
+              ? 'Savings'
+              : t.kind === 'withdrawal'
+                ? 'Returned from savings'
+                : cat.name}
         </T>
       </View>
       <T
         style={{
           fontFamily: font.bold,
           fontSize: 12,
-          color: t.kind === 'income' ? c.green : c.ink,
+          color: t.kind === 'income' || t.kind === 'withdrawal' ? c.green : c.ink,
         }}
       >
-        {t.kind === 'income' ? '+' : '−'}
+        {t.kind === 'income' || t.kind === 'withdrawal' ? '+' : '−'}
         {peso(t.amount_cents)}
       </T>
     </Pressable>
@@ -264,65 +283,77 @@ export function GoalCard({
   goal: g,
   transactions,
   onAdd,
+  onPress,
 }: {
   goal: Goal;
   transactions: Transaction[];
   onAdd?: () => void;
+  onPress?: () => void;
 }) {
   const saved = goalSaved(g, transactions),
     progress = Math.min(100, (saved / g.target_cents) * 100);
   return (
-    <Card>
-      <Row style={{ justifyContent: 'space-between' }}>
-        <Row>
-          <View
-            style={{
-              width: 44,
-              height: 44,
-              borderRadius: 14,
-              backgroundColor: c.lavender,
-              alignItems: 'center',
-              justifyContent: 'center',
-            }}
-          >
-            <Icon name={g.icon as IconName} color={c.purple} size={24} />
-          </View>
-          <View style={{ maxWidth: 215 }}>
-            <T style={{ fontFamily: font.bold, fontSize: 14 }}>{g.name}</T>
-            <T muted style={{ fontSize: 10 }}>
-              By{' '}
-              {new Date(g.target_date + 'T00:00:00').toLocaleDateString('en-PH', {
-                month: 'short',
-                year: 'numeric',
-              })}
-            </T>
-          </View>
-        </Row>
-        <T style={{ color: c.purple, fontSize: 11, fontFamily: font.bold }}>
-          {Math.round(progress)}%
-        </T>
-      </Row>
-      <Progress value={progress} color={c.purple} />
-      <Row style={{ justifyContent: 'space-between' }}>
-        <T style={{ fontFamily: font.bold, fontSize: 15 }}>
-          {peso(saved)}{' '}
-          <T muted style={{ fontSize: 10 }}>
-            of {peso(g.target_cents)}
+    <Pressable
+      accessibilityRole={onPress ? 'button' : undefined}
+      accessibilityLabel={onPress ? `View ${g.name} activities` : undefined}
+      onPress={onPress}
+    >
+      <Card>
+        <Row style={{ justifyContent: 'space-between' }}>
+          <Row>
+            <View
+              style={{
+                width: 44,
+                height: 44,
+                borderRadius: 14,
+                backgroundColor: c.lavender,
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <Icon name={g.icon as IconName} color={c.purple} size={24} />
+            </View>
+            <View style={{ maxWidth: 215 }}>
+              <T style={{ fontFamily: font.bold, fontSize: 14 }}>{g.name}</T>
+              <T muted style={{ fontSize: 10 }}>
+                By{' '}
+                {new Date(g.target_date + 'T00:00:00').toLocaleDateString('en-PH', {
+                  month: 'short',
+                  year: 'numeric',
+                })}
+              </T>
+            </View>
+          </Row>
+          <T style={{ color: c.purple, fontSize: 11, fontFamily: font.bold }}>
+            {Math.round(progress)}%
           </T>
-        </T>
-        <T muted style={{ fontSize: 10 }}>
-          {progress >= 100 ? 'Goal reached! 🎉' : `${peso(g.target_cents - saved)} to go`}
-        </T>
-      </Row>
-      {onAdd && progress < 100 && (
-        <Button
-          label="Add to this goal"
-          icon="add"
-          variant="secondary"
-          onPress={onAdd}
-          style={{ minHeight: 42, backgroundColor: c.lavender }}
-        />
-      )}
-    </Card>
+        </Row>
+        <Progress value={progress} color={c.purple} />
+        <Row style={{ justifyContent: 'space-between' }}>
+          <T style={{ fontFamily: font.bold, fontSize: 15 }}>
+            {peso(saved)}{' '}
+            <T muted style={{ fontSize: 10 }}>
+              of {peso(g.target_cents)}
+            </T>
+          </T>
+          <T muted style={{ fontSize: 10 }}>
+            {g.deleted_at
+              ? 'Savings returned'
+              : progress >= 100
+                ? 'Goal reached! 🎉'
+                : `${peso(g.target_cents - saved)} to go`}
+          </T>
+        </Row>
+        {onAdd && progress < 100 && (
+          <Button
+            label="Add to this goal"
+            icon="add"
+            variant="secondary"
+            onPress={onAdd}
+            style={{ minHeight: 42, backgroundColor: c.lavender }}
+          />
+        )}
+      </Card>
+    </Pressable>
   );
 }
