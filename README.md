@@ -118,6 +118,8 @@ Use HTTPS at your hosting proxy and set `CORS_ORIGINS` for deployed browser orig
 
 Production: https://pondohub.vercel.app
 
+The project is deployed via Vercel CLI. GitHub source updates are pushed, but automatic Git deployments are not connected: Vercel requires a GitHub login connection on the owning account. Add that connection in Vercel account settings, then connect `jkhliffz09/pondohub` in project Git settings. Until then, deploy from the repository root with `npx vercel@62.7.0 deploy --prod`. Local `.vercel` project linkage is ignored by Git.
+
 The responsive public home page includes desktop navigation, a phone menu, sign-up and login, a demo entry, and an Android download section. `/login` and `/register` support direct links and refresh. The same React Native screens are included in Android and iOS source builds. Authentication still requires a valid Supabase account and the installed database schema.
 
 Import `jkhliffz09/pondohub` into Vercel with the **repository root** as Root Directory and **Other** as the framework. `vercel.json` configures installation, build output, API routing, and SPA fallbacks. The build bundles Express and the shared TypeScript package into `apps/api/dist/vercel.cjs`, exports Expo web into `apps/mobile/dist`, and serves the API through `api/index.js`. No Docker container is needed on Vercel.
