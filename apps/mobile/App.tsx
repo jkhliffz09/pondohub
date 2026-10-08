@@ -8,7 +8,7 @@ import {
 } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import { PlusJakartaSans_400Regular } from '@expo-google-fonts/plus-jakarta-sans/400Regular';
@@ -30,6 +30,8 @@ import { Profile, Settings } from './src/screens/Profile';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 function Tabs() {
+  const insets = useSafeAreaInsets();
+  const bottomPadding = Math.max(insets.bottom, 10);
   const { data } = useStore();
   const parent = data?.profile.role === 'parent';
   return (
@@ -41,8 +43,8 @@ function Tabs() {
           backgroundColor: 'white',
           borderTopColor: c.line,
           paddingTop: 8,
-          height: Platform.OS === 'ios' ? 84 : 72,
-          paddingBottom: Platform.OS === 'ios' ? 24 : 10,
+          height: 62 + bottomPadding,
+          paddingBottom: bottomPadding,
         },
         tabBarActiveTintColor: c.green,
         tabBarInactiveTintColor: '#A0AAA4',
