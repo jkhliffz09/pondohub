@@ -19,7 +19,7 @@ import { PlusJakartaSans_800ExtraBold } from '@expo-google-fonts/plus-jakarta-sa
 import { StoreProvider, useStore } from './src/lib/store';
 import { Icon, T, Button, Card } from './src/components/ui';
 import { c, font } from './src/theme';
-import { Splash, AuthScreen } from './src/screens/Auth';
+import { Splash, AuthScreen, ConfirmEmail } from './src/screens/Auth';
 import { Landing } from './src/screens/Landing';
 import { Home } from './src/screens/Home';
 import { MoneyForm, Afford } from './src/screens/Money';
@@ -142,7 +142,12 @@ function Navigation() {
                     },
                   },
                 }
-              : { Welcome: '', Login: 'login', Register: 'register' },
+              : {
+                  Welcome: '',
+                  Login: 'login',
+                  Register: 'register',
+                  ConfirmEmail: 'confirm-email',
+                },
           },
         } as LinkingOptions<ParamListBase>
       }
@@ -185,6 +190,7 @@ function Navigation() {
           <>
             <Stack.Screen name="Welcome" component={Landing} />
             <Stack.Screen name="Register" component={AuthScreen} />
+            <Stack.Screen name="ConfirmEmail" component={ConfirmEmail} />
             <Stack.Screen name="Login" component={AuthScreen} />
           </>
         )}

@@ -224,11 +224,9 @@ export function AuthScreen({ navigation, route }: { navigation: any; route: any 
     [visible, setVisible] = useState(false),
     [accepted, setAccepted] = useState(false),
     [error, setError] = useState<string | null>(null),
-    [busy, setBusy] = useState(false),
-    [message, setMessage] = useState('');
+    [busy, setBusy] = useState(false);
   async function submit() {
     setError(null);
-    setMessage('');
     if (!supabase) {
       setError(
         'Your Supabase project key is not configured yet. Go back and choose Explore the demo.',
@@ -272,8 +270,7 @@ export function AuthScreen({ navigation, route }: { navigation: any; route: any 
           },
         });
         if (error) throw error;
-        if (!data.session)
-          setMessage('Check your email to confirm your account, then sign in here.');
+        if (!data.session) navigation.replace('ConfirmEmail');
       }
     } catch (e) {
       setError((e as Error).message);
@@ -422,11 +419,6 @@ export function AuthScreen({ navigation, route }: { navigation: any; route: any 
             </>
           )}
           <ErrorText message={error} />
-          {!!message && (
-            <Card style={{ backgroundColor: c.mint }}>
-              <T style={{ color: c.green }}>{message}</T>
-            </Card>
-          )}
           <Button
             label={login ? 'Sign in' : 'Create account'}
             loading={busy}
@@ -440,6 +432,48 @@ export function AuthScreen({ navigation, route }: { navigation: any; route: any 
           />
         </ScrollView>
       </KeyboardAvoidingView>
+    </SafeAreaView>
+  );
+}
+export function ConfirmEmail({ navigation }: { navigation: any }) {
+  return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: c.bg }}>
+      <ScrollView
+        contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', padding: 28, gap: 24 }}
+      >
+        <View style={{ alignItems: 'center', gap: 16 }}>
+          <View style={{ backgroundColor: c.mint, padding: 24, borderRadius: 28 }}>
+            <Icon name="mail-unread-outline" size={48} color={c.green} />
+          </View>
+          <T style={{ fontFamily: font.extra, fontSize: 29, lineHeight: 38, textAlign: 'center' }}>
+            Confirm your email
+          </T>
+          <T style={{ textAlign: 'center', lineHeight: 23 }}>
+            Before you can sign in, open the confirmation email sent to the address you used to
+            register.
+          </T>
+        </View>
+        <Card>
+          <T style={{ fontFamily: font.bold }}>Your next steps</T>
+          <T>1. Open your email inbox.</T>
+          <T>2. Find the email from Pondo Hub and tap the confirmation link.</T>
+          <T>3. Return to Pondo Hub and sign in.</T>
+        </Card>
+        <T muted style={{ textAlign: 'center', lineHeight: 22 }}>
+          No email yet? Check Spam or Junk and allow a few minutes for delivery. If you already have
+          an account, try signing in.
+        </T>
+        <Button
+          label="Go to sign in"
+          icon="arrow-forward"
+          onPress={() => navigation.replace('Login')}
+        />
+        <Button
+          label="Used the wrong email? Register again"
+          variant="ghost"
+          onPress={() => navigation.replace('Register')}
+        />
+      </ScrollView>
     </SafeAreaView>
   );
 }
