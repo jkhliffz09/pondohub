@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Platform } from 'react-native';
+import { View, Platform, Pressable } from 'react-native';
 import {
   NavigationContainer,
   DefaultTheme,
@@ -94,6 +94,38 @@ function Tabs() {
     </Tab.Navigator>
   );
 }
+function OpenAppBanner() {
+  if (
+    Platform.OS !== 'web' ||
+    typeof navigator === 'undefined' ||
+    !/Android/i.test(navigator.userAgent)
+  )
+    return null;
+  const fallback = encodeURIComponent('https://pondohub.vercel.app/');
+  return (
+    <View
+      style={{
+        padding: 12,
+        backgroundColor: c.mint,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        gap: 12,
+      }}
+    >
+      <T style={{ flex: 1, fontSize: 12 }}>Already installed Pondo Hub?</T>
+      <Pressable
+        accessibilityRole="link"
+        onPress={() => {
+          window.location.href = `intent://#Intent;scheme=pondohub;package=com.pondohub.app;S.browser_fallback_url=${fallback};end`;
+        }}
+        style={{ padding: 10 }}
+      >
+        <T style={{ color: c.green, fontFamily: font.bold }}>Open app</T>
+      </Pressable>
+    </View>
+  );
+}
 function Navigation() {
   const store = useStore();
   if (store.loading) return <Splash />;
@@ -143,7 +175,7 @@ function Navigation() {
                   },
                 }
               : {
-                  Welcome: '',
+                  ...(Platform.OS === 'web' ? { Welcome: '' } : {}),
                   Login: 'login',
                   Register: 'register',
                   ConfirmEmail: 'confirm-email',
@@ -157,7 +189,7 @@ function Navigation() {
       }}
     >
       <Stack.Navigator
-        initialRouteName={store.data ? 'Tabs' : 'Welcome'}
+        initialRouteName={store.data ? 'Tabs' : Platform.OS === 'web' ? 'Welcome' : 'Login'}
         screenOptions={({ route }) => ({
           headerShown: false,
           contentStyle: {
@@ -188,7 +220,7 @@ function Navigation() {
           </>
         ) : (
           <>
-            <Stack.Screen name="Welcome" component={Landing} />
+            {Platform.OS === 'web' && <Stack.Screen name="Welcome" component={Landing} />}
             <Stack.Screen name="Register" component={AuthScreen} />
             <Stack.Screen name="ConfirmEmail" component={ConfirmEmail} />
             <Stack.Screen name="Login" component={AuthScreen} />
@@ -228,6 +260,7 @@ export default function App() {
             <Splash />
           ) : (
             <StoreProvider>
+              <OpenAppBanner />
               <Navigation />
             </StoreProvider>
           )}

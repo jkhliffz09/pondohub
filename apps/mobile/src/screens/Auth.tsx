@@ -288,15 +288,19 @@ export function AuthScreen({ navigation, route }: { navigation: any; route: any 
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{ padding: 25, gap: 22 }}
         >
-          <Pressable
-            accessibilityRole="button"
-            accessibilityLabel="Go back"
-            onPress={() =>
-              navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Welcome')
-            }
-          >
-            <Icon name="arrow-back" color={c.ink} />
-          </Pressable>
+          {(Platform.OS === 'web' || !login || navigation.canGoBack()) && (
+            <Pressable
+              accessibilityRole="button"
+              accessibilityLabel="Go back"
+              onPress={() =>
+                navigation.canGoBack()
+                  ? navigation.goBack()
+                  : navigation.navigate(Platform.OS === 'web' ? 'Welcome' : 'Login')
+              }
+            >
+              <Icon name="arrow-back" color={c.ink} />
+            </Pressable>
+          )}
           <View style={{ gap: 10, marginTop: 8 }}>
             <T
               style={{
