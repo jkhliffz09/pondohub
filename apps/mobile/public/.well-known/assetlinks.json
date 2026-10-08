@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.pondohub.app",
+      "sha256_cert_fingerprints": [
+        "2E:B9:07:5D:BC:EC:D2:56:8C:74:B1:6B:BB:C2:EE:F4:ED:D4:CA:80:17:C5:13:74:0A:DB:D5:C4:D0:6A:B7:85"
+      ]
+    }
+  }
+]

@@ -261,12 +261,7 @@ export function AuthScreen({ navigation, route }: { navigation: any; route: any 
           password,
           options: {
             data: { name: name.trim(), role },
-            emailRedirectTo:
-              Platform.OS === 'web'
-                ? `${window.location.origin}/login`
-                : process.env.EXPO_PUBLIC_SITE_URL
-                  ? `${process.env.EXPO_PUBLIC_SITE_URL.replace(/\/$/, '')}/login`
-                  : undefined,
+            emailRedirectTo: 'https://pondohub.vercel.app/auth/confirmed',
           },
         });
         if (error) throw error;

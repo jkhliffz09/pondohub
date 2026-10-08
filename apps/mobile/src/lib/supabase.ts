@@ -48,7 +48,8 @@ export const supabase =
           storage,
           autoRefreshToken: true,
           persistSession: true,
-          detectSessionInUrl: Platform.OS === 'web',
+          detectSessionInUrl:
+            Platform.OS === 'web' && window.location.pathname !== '/auth/confirmed',
         },
       })
     : null;

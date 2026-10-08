@@ -20,6 +20,7 @@ import { StoreProvider, useStore } from './src/lib/store';
 import { Icon, T, Button, Card } from './src/components/ui';
 import { c, font } from './src/theme';
 import { Splash, AuthScreen, ConfirmEmail } from './src/screens/Auth';
+import { EmailCallback } from './src/screens/EmailCallback';
 import { Landing } from './src/screens/Landing';
 import { Home } from './src/screens/Home';
 import { MoneyForm, Afford } from './src/screens/Money';
@@ -158,10 +159,11 @@ function Navigation() {
       key={store.data ? 'member' : 'public'}
       linking={
         {
-          prefixes: ['pondohub://'],
+          prefixes: ['pondohub://', 'https://pondohub.vercel.app'],
           config: {
             screens: store.data
               ? {
+                  EmailCallback: 'auth/confirmed',
                   Tabs: {
                     path: 'app',
                     screens: {
@@ -179,6 +181,7 @@ function Navigation() {
                   Login: 'login',
                   Register: 'register',
                   ConfirmEmail: 'confirm-email',
+                  EmailCallback: 'auth/confirmed',
                 },
           },
         } as LinkingOptions<ParamListBase>
@@ -201,6 +204,7 @@ function Navigation() {
           animation: 'slide_from_right',
         })}
       >
+        <Stack.Screen name="EmailCallback" component={EmailCallback} />
         {store.data ? (
           <>
             <Stack.Screen name="Tabs" component={Tabs} />
